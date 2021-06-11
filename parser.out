@@ -1,125 +1,124 @@
 Created by PLY version 3.11 (http://www.dabeaz.com/ply)
 
-Unused terminals:
-
-    PUNTOCOMA
-
 Grammar
 
 Rule 0     S' -> consulta
-Rule 1     consulta -> SELECT campos FROM tablas join where grupos order_by
-Rule 2     campos -> columna
-Rule 3     campos -> funcion
-Rule 4     campos -> columna COMA campos
-Rule 5     campos -> funcion COMA campos
-Rule 6     tablas -> tabla
-Rule 7     tablas -> tabla COMA tablas
-Rule 8     tabla -> PALABRA
-Rule 9     tabla -> PALABRA AS PALABRA
-Rule 10    tabla -> PALABRA PALABRA
-Rule 11    columnas -> columna
-Rule 12    columnas -> columna COMA columnas
-Rule 13    columna -> PALABRA PUNTO PALABRA
-Rule 14    columna -> PALABRA PUNTO PALABRA AS PALABRA
-Rule 15    funcion -> MIN PAREN_IZQ columna PAREN_DER
-Rule 16    funcion -> MAX PAREN_IZQ columna PAREN_DER
-Rule 17    funcion -> COUNT PAREN_IZQ columna PAREN_DER
-Rule 18    funcion -> COUNT PAREN_IZQ DISTINCT columna PAREN_DER
-Rule 19    join -> INNER JOIN tabla ON condicion join
-Rule 20    join -> LEFT JOIN tabla ON condicion join
-Rule 21    join -> <empty>
-Rule 22    where -> WHERE condiciones
-Rule 23    where -> <empty>
-Rule 24    grupos -> group_by
-Rule 25    grupos -> group_by having
-Rule 26    grupos -> <empty>
-Rule 27    group_by -> GROUP BY columnas
-Rule 28    having -> HAVING condiciones_having
-Rule 29    condiciones_having -> funcion operador valor
-Rule 30    condiciones_having -> funcion operador valor COMA condiciones_having
-Rule 31    order_by -> ORDER BY condiciones_orderby
-Rule 32    condiciones_orderby -> columna orden
-Rule 33    condiciones_orderby -> columna orden COMA condiciones_orderby
-Rule 34    condiciones -> condicion
-Rule 35    condiciones -> condicion booleano condiciones
-Rule 36    condicion -> columna operador valor
-Rule 37    condicion -> columna operador columna
-Rule 38    condicion -> columna IN PAREN_IZQ consulta PAREN_DER
-Rule 39    valor -> NUMERO
-Rule 40    valor -> COMILLA PALABRA COMILLA
-Rule 41    operador -> IGUAL
-Rule 42    operador -> DESIGUAL
-Rule 43    operador -> MENOR_IZQ
-Rule 44    operador -> MEN_IGUAL_IZQ
-Rule 45    operador -> MAYOR_IZQ
-Rule 46    operador -> MAY_IGUAL_IZQ
-Rule 47    booleano -> AND
-Rule 48    booleano -> OR
-Rule 49    orden -> ASC
-Rule 50    orden -> DESC
-Rule 51    orden -> <empty>
+Rule 1     consulta -> SELECT distinct campos FROM tablas join where grupos order_by
+Rule 2     distinct -> DISTINCT
+Rule 3     distinct -> <empty>
+Rule 4     campos -> columna
+Rule 5     campos -> funcion
+Rule 6     campos -> columna COMA campos
+Rule 7     campos -> funcion COMA campos
+Rule 8     tablas -> tabla
+Rule 9     tablas -> tabla COMA tablas
+Rule 10    columnas -> columna
+Rule 11    columnas -> columna COMA columnas
+Rule 12    funcion -> MIN PAREN_IZQ columna PAREN_DER
+Rule 13    funcion -> MAX PAREN_IZQ columna PAREN_DER
+Rule 14    funcion -> COUNT PAREN_IZQ columna PAREN_DER
+Rule 15    funcion -> COUNT PAREN_IZQ DISTINCT columna PAREN_DER
+Rule 16    join -> INNER JOIN tabla ON condicion join
+Rule 17    join -> LEFT JOIN tabla ON condicion join
+Rule 18    join -> <empty>
+Rule 19    where -> WHERE condiciones
+Rule 20    where -> <empty>
+Rule 21    grupos -> group_by
+Rule 22    grupos -> group_by having
+Rule 23    grupos -> <empty>
+Rule 24    group_by -> GROUP BY columnas
+Rule 25    having -> HAVING condiciones_having
+Rule 26    condiciones_having -> funcion operador valor
+Rule 27    condiciones_having -> funcion operador valor COMA condiciones_having
+Rule 28    order_by -> ORDER BY condiciones_orderby
+Rule 29    order_by -> <empty>
+Rule 30    condiciones_orderby -> columna orden
+Rule 31    condiciones_orderby -> columna orden COMA condiciones_orderby
+Rule 32    condiciones -> condicion
+Rule 33    condiciones -> condicion booleano condiciones
+Rule 34    condicion -> columna operador valor
+Rule 35    condicion -> columna operador columna
+Rule 36    condicion -> columna IN PAREN_IZQ consulta PAREN_DER
+Rule 37    valor -> NUMERO
+Rule 38    valor -> COMILLA PALABRA COMILLA
+Rule 39    operador -> IGUAL
+Rule 40    operador -> DESIGUAL
+Rule 41    operador -> MENOR_IZQ
+Rule 42    operador -> MEN_IGUAL_IZQ
+Rule 43    operador -> MAYOR_IZQ
+Rule 44    operador -> MAY_IGUAL_IZQ
+Rule 45    booleano -> AND
+Rule 46    booleano -> OR
+Rule 47    orden -> ASC
+Rule 48    orden -> DESC
+Rule 49    orden -> <empty>
+Rule 50    tabla -> PALABRA
+Rule 51    tabla -> PALABRA AS PALABRA
+Rule 52    tabla -> PALABRA PALABRA
+Rule 53    columna -> PALABRA PUNTO PALABRA
+Rule 54    columna -> PALABRA PUNTO PALABRA AS PALABRA
 
 Terminals, with rules where they appear
 
-AND                  : 47
-AS                   : 9 14
-ASC                  : 49
-BY                   : 27 31
-COMA                 : 4 5 7 12 30 33
-COMILLA              : 40 40
-COUNT                : 17 18
-DESC                 : 50
-DESIGUAL             : 42
-DISTINCT             : 18
+AND                  : 45
+AS                   : 51 54
+ASC                  : 47
+BY                   : 24 28
+COMA                 : 6 7 9 11 27 31
+COMILLA              : 38 38
+COUNT                : 14 15
+DESC                 : 48
+DESIGUAL             : 40
+DISTINCT             : 2 15
 FROM                 : 1
-GROUP                : 27
-HAVING               : 28
-IGUAL                : 41
-IN                   : 38
-INNER                : 19
-JOIN                 : 19 20
-LEFT                 : 20
-MAX                  : 16
-MAYOR_IZQ            : 45
-MAY_IGUAL_IZQ        : 46
-MENOR_IZQ            : 43
-MEN_IGUAL_IZQ        : 44
-MIN                  : 15
-NUMERO               : 39
-ON                   : 19 20
-OR                   : 48
-ORDER                : 31
-PALABRA              : 8 9 9 10 10 13 13 14 14 14 40
-PAREN_DER            : 15 16 17 18 38
-PAREN_IZQ            : 15 16 17 18 38
-PUNTO                : 13 14
-PUNTOCOMA            : 
+GROUP                : 24
+HAVING               : 25
+IGUAL                : 39
+IN                   : 36
+INNER                : 16
+JOIN                 : 16 17
+LEFT                 : 17
+MAX                  : 13
+MAYOR_IZQ            : 43
+MAY_IGUAL_IZQ        : 44
+MENOR_IZQ            : 41
+MEN_IGUAL_IZQ        : 42
+MIN                  : 12
+NUMERO               : 37
+ON                   : 16 17
+OR                   : 46
+ORDER                : 28
+PALABRA              : 38 50 51 51 52 52 53 53 54 54 54
+PAREN_DER            : 12 13 14 15 36
+PAREN_IZQ            : 12 13 14 15 36
+PUNTO                : 53 54
 SELECT               : 1
-WHERE                : 22
+WHERE                : 19
 error                : 
 
 Nonterminals, with rules where they appear
 
-booleano             : 35
-campos               : 1 4 5
-columna              : 2 4 11 12 15 16 17 18 32 33 36 37 37 38
-columnas             : 12 27
-condicion            : 19 20 34 35
-condiciones          : 22 35
-condiciones_having   : 28 30
-condiciones_orderby  : 31 33
-consulta             : 38 0
-funcion              : 3 5 29 30
-group_by             : 24 25
+booleano             : 33
+campos               : 1 6 7
+columna              : 4 6 10 11 12 13 14 15 30 31 34 35 35 36
+columnas             : 11 24
+condicion            : 16 17 32 33
+condiciones          : 19 33
+condiciones_having   : 25 27
+condiciones_orderby  : 28 31
+consulta             : 36 0
+distinct             : 1
+funcion              : 5 7 26 27
+group_by             : 21 22
 grupos               : 1
-having               : 25
-join                 : 1 19 20
-operador             : 29 30 36 37
-orden                : 32 33
+having               : 22
+join                 : 1 16 17
+operador             : 26 27 34 35
+orden                : 30 31
 order_by             : 1
-tabla                : 6 7 19 20
-tablas               : 1 7
-valor                : 29 30 36
+tabla                : 8 9 16 17
+tablas               : 1 9
+valor                : 26 27 34
 where                : 1
 
 Parsing method: LALR
@@ -127,7 +126,7 @@ Parsing method: LALR
 state 0
 
     (0) S' -> . consulta
-    (1) consulta -> . SELECT campos FROM tablas join where grupos order_by
+    (1) consulta -> . SELECT distinct campos FROM tablas join where grupos order_by
 
     SELECT          shift and go to state 2
 
@@ -141,1154 +140,1237 @@ state 1
 
 state 2
 
-    (1) consulta -> SELECT . campos FROM tablas join where grupos order_by
-    (2) campos -> . columna
-    (3) campos -> . funcion
-    (4) campos -> . columna COMA campos
-    (5) campos -> . funcion COMA campos
-    (13) columna -> . PALABRA PUNTO PALABRA
-    (14) columna -> . PALABRA PUNTO PALABRA AS PALABRA
-    (15) funcion -> . MIN PAREN_IZQ columna PAREN_DER
-    (16) funcion -> . MAX PAREN_IZQ columna PAREN_DER
-    (17) funcion -> . COUNT PAREN_IZQ columna PAREN_DER
-    (18) funcion -> . COUNT PAREN_IZQ DISTINCT columna PAREN_DER
+    (1) consulta -> SELECT . distinct campos FROM tablas join where grupos order_by
+    (2) distinct -> . DISTINCT
+    (3) distinct -> .
 
-    PALABRA         shift and go to state 6
-    MIN             shift and go to state 7
-    MAX             shift and go to state 8
-    COUNT           shift and go to state 9
+    DISTINCT        shift and go to state 4
+    PALABRA         reduce using rule 3 (distinct -> .)
+    MIN             reduce using rule 3 (distinct -> .)
+    MAX             reduce using rule 3 (distinct -> .)
+    COUNT           reduce using rule 3 (distinct -> .)
 
-    campos                         shift and go to state 3
-    columna                        shift and go to state 4
-    funcion                        shift and go to state 5
+    distinct                       shift and go to state 3
 
 state 3
 
-    (1) consulta -> SELECT campos . FROM tablas join where grupos order_by
+    (1) consulta -> SELECT distinct . campos FROM tablas join where grupos order_by
+    (4) campos -> . columna
+    (5) campos -> . funcion
+    (6) campos -> . columna COMA campos
+    (7) campos -> . funcion COMA campos
+    (53) columna -> . PALABRA PUNTO PALABRA
+    (54) columna -> . PALABRA PUNTO PALABRA AS PALABRA
+    (12) funcion -> . MIN PAREN_IZQ columna PAREN_DER
+    (13) funcion -> . MAX PAREN_IZQ columna PAREN_DER
+    (14) funcion -> . COUNT PAREN_IZQ columna PAREN_DER
+    (15) funcion -> . COUNT PAREN_IZQ DISTINCT columna PAREN_DER
 
-    FROM            shift and go to state 10
+    PALABRA         shift and go to state 8
+    MIN             shift and go to state 9
+    MAX             shift and go to state 10
+    COUNT           shift and go to state 11
 
+    campos                         shift and go to state 5
+    columna                        shift and go to state 6
+    funcion                        shift and go to state 7
 
 state 4
 
-    (2) campos -> columna .
-    (4) campos -> columna . COMA campos
+    (2) distinct -> DISTINCT .
 
-    FROM            reduce using rule 2 (campos -> columna .)
-    COMA            shift and go to state 11
+    PALABRA         reduce using rule 2 (distinct -> DISTINCT .)
+    MIN             reduce using rule 2 (distinct -> DISTINCT .)
+    MAX             reduce using rule 2 (distinct -> DISTINCT .)
+    COUNT           reduce using rule 2 (distinct -> DISTINCT .)
 
 
 state 5
 
-    (3) campos -> funcion .
-    (5) campos -> funcion . COMA campos
+    (1) consulta -> SELECT distinct campos . FROM tablas join where grupos order_by
 
-    FROM            reduce using rule 3 (campos -> funcion .)
-    COMA            shift and go to state 12
+    FROM            shift and go to state 12
 
 
 state 6
 
-    (13) columna -> PALABRA . PUNTO PALABRA
-    (14) columna -> PALABRA . PUNTO PALABRA AS PALABRA
+    (4) campos -> columna .
+    (6) campos -> columna . COMA campos
 
-    PUNTO           shift and go to state 13
+    FROM            reduce using rule 4 (campos -> columna .)
+    COMA            shift and go to state 13
 
 
 state 7
 
-    (15) funcion -> MIN . PAREN_IZQ columna PAREN_DER
+    (5) campos -> funcion .
+    (7) campos -> funcion . COMA campos
 
-    PAREN_IZQ       shift and go to state 14
+    FROM            reduce using rule 5 (campos -> funcion .)
+    COMA            shift and go to state 14
 
 
 state 8
 
-    (16) funcion -> MAX . PAREN_IZQ columna PAREN_DER
+    (53) columna -> PALABRA . PUNTO PALABRA
+    (54) columna -> PALABRA . PUNTO PALABRA AS PALABRA
 
-    PAREN_IZQ       shift and go to state 15
+    PUNTO           shift and go to state 15
 
 
 state 9
 
-    (17) funcion -> COUNT . PAREN_IZQ columna PAREN_DER
-    (18) funcion -> COUNT . PAREN_IZQ DISTINCT columna PAREN_DER
+    (12) funcion -> MIN . PAREN_IZQ columna PAREN_DER
 
     PAREN_IZQ       shift and go to state 16
 
 
 state 10
 
-    (1) consulta -> SELECT campos FROM . tablas join where grupos order_by
-    (6) tablas -> . tabla
-    (7) tablas -> . tabla COMA tablas
-    (8) tabla -> . PALABRA
-    (9) tabla -> . PALABRA AS PALABRA
-    (10) tabla -> . PALABRA PALABRA
+    (13) funcion -> MAX . PAREN_IZQ columna PAREN_DER
 
-    PALABRA         shift and go to state 19
+    PAREN_IZQ       shift and go to state 17
 
-    tablas                         shift and go to state 17
-    tabla                          shift and go to state 18
 
 state 11
 
-    (4) campos -> columna COMA . campos
-    (2) campos -> . columna
-    (3) campos -> . funcion
-    (4) campos -> . columna COMA campos
-    (5) campos -> . funcion COMA campos
-    (13) columna -> . PALABRA PUNTO PALABRA
-    (14) columna -> . PALABRA PUNTO PALABRA AS PALABRA
-    (15) funcion -> . MIN PAREN_IZQ columna PAREN_DER
-    (16) funcion -> . MAX PAREN_IZQ columna PAREN_DER
-    (17) funcion -> . COUNT PAREN_IZQ columna PAREN_DER
-    (18) funcion -> . COUNT PAREN_IZQ DISTINCT columna PAREN_DER
+    (14) funcion -> COUNT . PAREN_IZQ columna PAREN_DER
+    (15) funcion -> COUNT . PAREN_IZQ DISTINCT columna PAREN_DER
 
-    PALABRA         shift and go to state 6
-    MIN             shift and go to state 7
-    MAX             shift and go to state 8
-    COUNT           shift and go to state 9
+    PAREN_IZQ       shift and go to state 18
 
-    columna                        shift and go to state 4
-    campos                         shift and go to state 20
-    funcion                        shift and go to state 5
 
 state 12
 
-    (5) campos -> funcion COMA . campos
-    (2) campos -> . columna
-    (3) campos -> . funcion
-    (4) campos -> . columna COMA campos
-    (5) campos -> . funcion COMA campos
-    (13) columna -> . PALABRA PUNTO PALABRA
-    (14) columna -> . PALABRA PUNTO PALABRA AS PALABRA
-    (15) funcion -> . MIN PAREN_IZQ columna PAREN_DER
-    (16) funcion -> . MAX PAREN_IZQ columna PAREN_DER
-    (17) funcion -> . COUNT PAREN_IZQ columna PAREN_DER
-    (18) funcion -> . COUNT PAREN_IZQ DISTINCT columna PAREN_DER
+    (1) consulta -> SELECT distinct campos FROM . tablas join where grupos order_by
+    (8) tablas -> . tabla
+    (9) tablas -> . tabla COMA tablas
+    (50) tabla -> . PALABRA
+    (51) tabla -> . PALABRA AS PALABRA
+    (52) tabla -> . PALABRA PALABRA
 
-    PALABRA         shift and go to state 6
-    MIN             shift and go to state 7
-    MAX             shift and go to state 8
-    COUNT           shift and go to state 9
+    PALABRA         shift and go to state 21
 
-    funcion                        shift and go to state 5
-    campos                         shift and go to state 21
-    columna                        shift and go to state 4
+    tablas                         shift and go to state 19
+    tabla                          shift and go to state 20
 
 state 13
 
-    (13) columna -> PALABRA PUNTO . PALABRA
-    (14) columna -> PALABRA PUNTO . PALABRA AS PALABRA
+    (6) campos -> columna COMA . campos
+    (4) campos -> . columna
+    (5) campos -> . funcion
+    (6) campos -> . columna COMA campos
+    (7) campos -> . funcion COMA campos
+    (53) columna -> . PALABRA PUNTO PALABRA
+    (54) columna -> . PALABRA PUNTO PALABRA AS PALABRA
+    (12) funcion -> . MIN PAREN_IZQ columna PAREN_DER
+    (13) funcion -> . MAX PAREN_IZQ columna PAREN_DER
+    (14) funcion -> . COUNT PAREN_IZQ columna PAREN_DER
+    (15) funcion -> . COUNT PAREN_IZQ DISTINCT columna PAREN_DER
 
-    PALABRA         shift and go to state 22
+    PALABRA         shift and go to state 8
+    MIN             shift and go to state 9
+    MAX             shift and go to state 10
+    COUNT           shift and go to state 11
 
+    columna                        shift and go to state 6
+    campos                         shift and go to state 22
+    funcion                        shift and go to state 7
 
 state 14
 
-    (15) funcion -> MIN PAREN_IZQ . columna PAREN_DER
-    (13) columna -> . PALABRA PUNTO PALABRA
-    (14) columna -> . PALABRA PUNTO PALABRA AS PALABRA
+    (7) campos -> funcion COMA . campos
+    (4) campos -> . columna
+    (5) campos -> . funcion
+    (6) campos -> . columna COMA campos
+    (7) campos -> . funcion COMA campos
+    (53) columna -> . PALABRA PUNTO PALABRA
+    (54) columna -> . PALABRA PUNTO PALABRA AS PALABRA
+    (12) funcion -> . MIN PAREN_IZQ columna PAREN_DER
+    (13) funcion -> . MAX PAREN_IZQ columna PAREN_DER
+    (14) funcion -> . COUNT PAREN_IZQ columna PAREN_DER
+    (15) funcion -> . COUNT PAREN_IZQ DISTINCT columna PAREN_DER
 
-    PALABRA         shift and go to state 6
+    PALABRA         shift and go to state 8
+    MIN             shift and go to state 9
+    MAX             shift and go to state 10
+    COUNT           shift and go to state 11
 
-    columna                        shift and go to state 23
+    funcion                        shift and go to state 7
+    campos                         shift and go to state 23
+    columna                        shift and go to state 6
 
 state 15
 
-    (16) funcion -> MAX PAREN_IZQ . columna PAREN_DER
-    (13) columna -> . PALABRA PUNTO PALABRA
-    (14) columna -> . PALABRA PUNTO PALABRA AS PALABRA
+    (53) columna -> PALABRA PUNTO . PALABRA
+    (54) columna -> PALABRA PUNTO . PALABRA AS PALABRA
 
-    PALABRA         shift and go to state 6
+    PALABRA         shift and go to state 24
 
-    columna                        shift and go to state 24
 
 state 16
 
-    (17) funcion -> COUNT PAREN_IZQ . columna PAREN_DER
-    (18) funcion -> COUNT PAREN_IZQ . DISTINCT columna PAREN_DER
-    (13) columna -> . PALABRA PUNTO PALABRA
-    (14) columna -> . PALABRA PUNTO PALABRA AS PALABRA
+    (12) funcion -> MIN PAREN_IZQ . columna PAREN_DER
+    (53) columna -> . PALABRA PUNTO PALABRA
+    (54) columna -> . PALABRA PUNTO PALABRA AS PALABRA
 
-    DISTINCT        shift and go to state 26
-    PALABRA         shift and go to state 6
+    PALABRA         shift and go to state 8
 
     columna                        shift and go to state 25
 
 state 17
 
-    (1) consulta -> SELECT campos FROM tablas . join where grupos order_by
-    (19) join -> . INNER JOIN tabla ON condicion join
-    (20) join -> . LEFT JOIN tabla ON condicion join
-    (21) join -> .
+    (13) funcion -> MAX PAREN_IZQ . columna PAREN_DER
+    (53) columna -> . PALABRA PUNTO PALABRA
+    (54) columna -> . PALABRA PUNTO PALABRA AS PALABRA
 
-    INNER           shift and go to state 28
-    LEFT            shift and go to state 29
-    WHERE           reduce using rule 21 (join -> .)
-    GROUP           reduce using rule 21 (join -> .)
-    ORDER           reduce using rule 21 (join -> .)
+    PALABRA         shift and go to state 8
 
-    join                           shift and go to state 27
+    columna                        shift and go to state 26
 
 state 18
 
-    (6) tablas -> tabla .
-    (7) tablas -> tabla . COMA tablas
+    (14) funcion -> COUNT PAREN_IZQ . columna PAREN_DER
+    (15) funcion -> COUNT PAREN_IZQ . DISTINCT columna PAREN_DER
+    (53) columna -> . PALABRA PUNTO PALABRA
+    (54) columna -> . PALABRA PUNTO PALABRA AS PALABRA
 
-    INNER           reduce using rule 6 (tablas -> tabla .)
-    LEFT            reduce using rule 6 (tablas -> tabla .)
-    WHERE           reduce using rule 6 (tablas -> tabla .)
-    GROUP           reduce using rule 6 (tablas -> tabla .)
-    ORDER           reduce using rule 6 (tablas -> tabla .)
-    COMA            shift and go to state 30
+    DISTINCT        shift and go to state 28
+    PALABRA         shift and go to state 8
 
+    columna                        shift and go to state 27
 
 state 19
 
-    (8) tabla -> PALABRA .
-    (9) tabla -> PALABRA . AS PALABRA
-    (10) tabla -> PALABRA . PALABRA
+    (1) consulta -> SELECT distinct campos FROM tablas . join where grupos order_by
+    (16) join -> . INNER JOIN tabla ON condicion join
+    (17) join -> . LEFT JOIN tabla ON condicion join
+    (18) join -> .
 
-    COMA            reduce using rule 8 (tabla -> PALABRA .)
-    INNER           reduce using rule 8 (tabla -> PALABRA .)
-    LEFT            reduce using rule 8 (tabla -> PALABRA .)
-    WHERE           reduce using rule 8 (tabla -> PALABRA .)
-    GROUP           reduce using rule 8 (tabla -> PALABRA .)
-    ORDER           reduce using rule 8 (tabla -> PALABRA .)
-    ON              reduce using rule 8 (tabla -> PALABRA .)
-    AS              shift and go to state 32
-    PALABRA         shift and go to state 31
+    INNER           shift and go to state 30
+    LEFT            shift and go to state 31
+    WHERE           reduce using rule 18 (join -> .)
+    GROUP           reduce using rule 18 (join -> .)
+    ORDER           reduce using rule 18 (join -> .)
+    $end            reduce using rule 18 (join -> .)
+    PAREN_DER       reduce using rule 18 (join -> .)
 
+    join                           shift and go to state 29
 
 state 20
 
-    (4) campos -> columna COMA campos .
+    (8) tablas -> tabla .
+    (9) tablas -> tabla . COMA tablas
 
-    FROM            reduce using rule 4 (campos -> columna COMA campos .)
+    INNER           reduce using rule 8 (tablas -> tabla .)
+    LEFT            reduce using rule 8 (tablas -> tabla .)
+    WHERE           reduce using rule 8 (tablas -> tabla .)
+    GROUP           reduce using rule 8 (tablas -> tabla .)
+    ORDER           reduce using rule 8 (tablas -> tabla .)
+    $end            reduce using rule 8 (tablas -> tabla .)
+    PAREN_DER       reduce using rule 8 (tablas -> tabla .)
+    COMA            shift and go to state 32
 
 
 state 21
 
-    (5) campos -> funcion COMA campos .
+    (50) tabla -> PALABRA .
+    (51) tabla -> PALABRA . AS PALABRA
+    (52) tabla -> PALABRA . PALABRA
 
-    FROM            reduce using rule 5 (campos -> funcion COMA campos .)
+    COMA            reduce using rule 50 (tabla -> PALABRA .)
+    INNER           reduce using rule 50 (tabla -> PALABRA .)
+    LEFT            reduce using rule 50 (tabla -> PALABRA .)
+    WHERE           reduce using rule 50 (tabla -> PALABRA .)
+    GROUP           reduce using rule 50 (tabla -> PALABRA .)
+    ORDER           reduce using rule 50 (tabla -> PALABRA .)
+    $end            reduce using rule 50 (tabla -> PALABRA .)
+    PAREN_DER       reduce using rule 50 (tabla -> PALABRA .)
+    ON              reduce using rule 50 (tabla -> PALABRA .)
+    AS              shift and go to state 34
+    PALABRA         shift and go to state 33
 
 
 state 22
 
-    (13) columna -> PALABRA PUNTO PALABRA .
-    (14) columna -> PALABRA PUNTO PALABRA . AS PALABRA
+    (6) campos -> columna COMA campos .
 
-    COMA            reduce using rule 13 (columna -> PALABRA PUNTO PALABRA .)
-    FROM            reduce using rule 13 (columna -> PALABRA PUNTO PALABRA .)
-    PAREN_DER       reduce using rule 13 (columna -> PALABRA PUNTO PALABRA .)
-    IN              reduce using rule 13 (columna -> PALABRA PUNTO PALABRA .)
-    IGUAL           reduce using rule 13 (columna -> PALABRA PUNTO PALABRA .)
-    DESIGUAL        reduce using rule 13 (columna -> PALABRA PUNTO PALABRA .)
-    MENOR_IZQ       reduce using rule 13 (columna -> PALABRA PUNTO PALABRA .)
-    MEN_IGUAL_IZQ   reduce using rule 13 (columna -> PALABRA PUNTO PALABRA .)
-    MAYOR_IZQ       reduce using rule 13 (columna -> PALABRA PUNTO PALABRA .)
-    MAY_IGUAL_IZQ   reduce using rule 13 (columna -> PALABRA PUNTO PALABRA .)
-    HAVING          reduce using rule 13 (columna -> PALABRA PUNTO PALABRA .)
-    ORDER           reduce using rule 13 (columna -> PALABRA PUNTO PALABRA .)
-    AND             reduce using rule 13 (columna -> PALABRA PUNTO PALABRA .)
-    OR              reduce using rule 13 (columna -> PALABRA PUNTO PALABRA .)
-    GROUP           reduce using rule 13 (columna -> PALABRA PUNTO PALABRA .)
-    INNER           reduce using rule 13 (columna -> PALABRA PUNTO PALABRA .)
-    LEFT            reduce using rule 13 (columna -> PALABRA PUNTO PALABRA .)
-    WHERE           reduce using rule 13 (columna -> PALABRA PUNTO PALABRA .)
-    ASC             reduce using rule 13 (columna -> PALABRA PUNTO PALABRA .)
-    DESC            reduce using rule 13 (columna -> PALABRA PUNTO PALABRA .)
-    $end            reduce using rule 13 (columna -> PALABRA PUNTO PALABRA .)
-    AS              shift and go to state 33
+    FROM            reduce using rule 6 (campos -> columna COMA campos .)
 
 
 state 23
 
-    (15) funcion -> MIN PAREN_IZQ columna . PAREN_DER
+    (7) campos -> funcion COMA campos .
 
-    PAREN_DER       shift and go to state 34
+    FROM            reduce using rule 7 (campos -> funcion COMA campos .)
 
 
 state 24
 
-    (16) funcion -> MAX PAREN_IZQ columna . PAREN_DER
+    (53) columna -> PALABRA PUNTO PALABRA .
+    (54) columna -> PALABRA PUNTO PALABRA . AS PALABRA
 
-    PAREN_DER       shift and go to state 35
+    COMA            reduce using rule 53 (columna -> PALABRA PUNTO PALABRA .)
+    FROM            reduce using rule 53 (columna -> PALABRA PUNTO PALABRA .)
+    PAREN_DER       reduce using rule 53 (columna -> PALABRA PUNTO PALABRA .)
+    IN              reduce using rule 53 (columna -> PALABRA PUNTO PALABRA .)
+    IGUAL           reduce using rule 53 (columna -> PALABRA PUNTO PALABRA .)
+    DESIGUAL        reduce using rule 53 (columna -> PALABRA PUNTO PALABRA .)
+    MENOR_IZQ       reduce using rule 53 (columna -> PALABRA PUNTO PALABRA .)
+    MEN_IGUAL_IZQ   reduce using rule 53 (columna -> PALABRA PUNTO PALABRA .)
+    MAYOR_IZQ       reduce using rule 53 (columna -> PALABRA PUNTO PALABRA .)
+    MAY_IGUAL_IZQ   reduce using rule 53 (columna -> PALABRA PUNTO PALABRA .)
+    HAVING          reduce using rule 53 (columna -> PALABRA PUNTO PALABRA .)
+    ORDER           reduce using rule 53 (columna -> PALABRA PUNTO PALABRA .)
+    $end            reduce using rule 53 (columna -> PALABRA PUNTO PALABRA .)
+    AND             reduce using rule 53 (columna -> PALABRA PUNTO PALABRA .)
+    OR              reduce using rule 53 (columna -> PALABRA PUNTO PALABRA .)
+    GROUP           reduce using rule 53 (columna -> PALABRA PUNTO PALABRA .)
+    INNER           reduce using rule 53 (columna -> PALABRA PUNTO PALABRA .)
+    LEFT            reduce using rule 53 (columna -> PALABRA PUNTO PALABRA .)
+    WHERE           reduce using rule 53 (columna -> PALABRA PUNTO PALABRA .)
+    ASC             reduce using rule 53 (columna -> PALABRA PUNTO PALABRA .)
+    DESC            reduce using rule 53 (columna -> PALABRA PUNTO PALABRA .)
+    AS              shift and go to state 35
 
 
 state 25
 
-    (17) funcion -> COUNT PAREN_IZQ columna . PAREN_DER
+    (12) funcion -> MIN PAREN_IZQ columna . PAREN_DER
 
     PAREN_DER       shift and go to state 36
 
 
 state 26
 
-    (18) funcion -> COUNT PAREN_IZQ DISTINCT . columna PAREN_DER
-    (13) columna -> . PALABRA PUNTO PALABRA
-    (14) columna -> . PALABRA PUNTO PALABRA AS PALABRA
+    (13) funcion -> MAX PAREN_IZQ columna . PAREN_DER
 
-    PALABRA         shift and go to state 6
+    PAREN_DER       shift and go to state 37
 
-    columna                        shift and go to state 37
 
 state 27
 
-    (1) consulta -> SELECT campos FROM tablas join . where grupos order_by
-    (22) where -> . WHERE condiciones
-    (23) where -> .
+    (14) funcion -> COUNT PAREN_IZQ columna . PAREN_DER
 
-    WHERE           shift and go to state 39
-    GROUP           reduce using rule 23 (where -> .)
-    ORDER           reduce using rule 23 (where -> .)
+    PAREN_DER       shift and go to state 38
 
-    where                          shift and go to state 38
 
 state 28
 
-    (19) join -> INNER . JOIN tabla ON condicion join
+    (15) funcion -> COUNT PAREN_IZQ DISTINCT . columna PAREN_DER
+    (53) columna -> . PALABRA PUNTO PALABRA
+    (54) columna -> . PALABRA PUNTO PALABRA AS PALABRA
 
-    JOIN            shift and go to state 40
+    PALABRA         shift and go to state 8
 
+    columna                        shift and go to state 39
 
 state 29
 
-    (20) join -> LEFT . JOIN tabla ON condicion join
+    (1) consulta -> SELECT distinct campos FROM tablas join . where grupos order_by
+    (19) where -> . WHERE condiciones
+    (20) where -> .
 
-    JOIN            shift and go to state 41
+    WHERE           shift and go to state 41
+    GROUP           reduce using rule 20 (where -> .)
+    ORDER           reduce using rule 20 (where -> .)
+    $end            reduce using rule 20 (where -> .)
+    PAREN_DER       reduce using rule 20 (where -> .)
 
+    where                          shift and go to state 40
 
 state 30
 
-    (7) tablas -> tabla COMA . tablas
-    (6) tablas -> . tabla
-    (7) tablas -> . tabla COMA tablas
-    (8) tabla -> . PALABRA
-    (9) tabla -> . PALABRA AS PALABRA
-    (10) tabla -> . PALABRA PALABRA
+    (16) join -> INNER . JOIN tabla ON condicion join
 
-    PALABRA         shift and go to state 19
+    JOIN            shift and go to state 42
 
-    tabla                          shift and go to state 18
-    tablas                         shift and go to state 42
 
 state 31
 
-    (10) tabla -> PALABRA PALABRA .
+    (17) join -> LEFT . JOIN tabla ON condicion join
 
-    COMA            reduce using rule 10 (tabla -> PALABRA PALABRA .)
-    INNER           reduce using rule 10 (tabla -> PALABRA PALABRA .)
-    LEFT            reduce using rule 10 (tabla -> PALABRA PALABRA .)
-    WHERE           reduce using rule 10 (tabla -> PALABRA PALABRA .)
-    GROUP           reduce using rule 10 (tabla -> PALABRA PALABRA .)
-    ORDER           reduce using rule 10 (tabla -> PALABRA PALABRA .)
-    ON              reduce using rule 10 (tabla -> PALABRA PALABRA .)
+    JOIN            shift and go to state 43
 
 
 state 32
 
-    (9) tabla -> PALABRA AS . PALABRA
+    (9) tablas -> tabla COMA . tablas
+    (8) tablas -> . tabla
+    (9) tablas -> . tabla COMA tablas
+    (50) tabla -> . PALABRA
+    (51) tabla -> . PALABRA AS PALABRA
+    (52) tabla -> . PALABRA PALABRA
 
-    PALABRA         shift and go to state 43
+    PALABRA         shift and go to state 21
 
+    tabla                          shift and go to state 20
+    tablas                         shift and go to state 44
 
 state 33
 
-    (14) columna -> PALABRA PUNTO PALABRA AS . PALABRA
+    (52) tabla -> PALABRA PALABRA .
 
-    PALABRA         shift and go to state 44
+    COMA            reduce using rule 52 (tabla -> PALABRA PALABRA .)
+    INNER           reduce using rule 52 (tabla -> PALABRA PALABRA .)
+    LEFT            reduce using rule 52 (tabla -> PALABRA PALABRA .)
+    WHERE           reduce using rule 52 (tabla -> PALABRA PALABRA .)
+    GROUP           reduce using rule 52 (tabla -> PALABRA PALABRA .)
+    ORDER           reduce using rule 52 (tabla -> PALABRA PALABRA .)
+    $end            reduce using rule 52 (tabla -> PALABRA PALABRA .)
+    PAREN_DER       reduce using rule 52 (tabla -> PALABRA PALABRA .)
+    ON              reduce using rule 52 (tabla -> PALABRA PALABRA .)
 
 
 state 34
 
-    (15) funcion -> MIN PAREN_IZQ columna PAREN_DER .
+    (51) tabla -> PALABRA AS . PALABRA
 
-    COMA            reduce using rule 15 (funcion -> MIN PAREN_IZQ columna PAREN_DER .)
-    FROM            reduce using rule 15 (funcion -> MIN PAREN_IZQ columna PAREN_DER .)
-    IGUAL           reduce using rule 15 (funcion -> MIN PAREN_IZQ columna PAREN_DER .)
-    DESIGUAL        reduce using rule 15 (funcion -> MIN PAREN_IZQ columna PAREN_DER .)
-    MENOR_IZQ       reduce using rule 15 (funcion -> MIN PAREN_IZQ columna PAREN_DER .)
-    MEN_IGUAL_IZQ   reduce using rule 15 (funcion -> MIN PAREN_IZQ columna PAREN_DER .)
-    MAYOR_IZQ       reduce using rule 15 (funcion -> MIN PAREN_IZQ columna PAREN_DER .)
-    MAY_IGUAL_IZQ   reduce using rule 15 (funcion -> MIN PAREN_IZQ columna PAREN_DER .)
+    PALABRA         shift and go to state 45
 
 
 state 35
 
-    (16) funcion -> MAX PAREN_IZQ columna PAREN_DER .
+    (54) columna -> PALABRA PUNTO PALABRA AS . PALABRA
 
-    COMA            reduce using rule 16 (funcion -> MAX PAREN_IZQ columna PAREN_DER .)
-    FROM            reduce using rule 16 (funcion -> MAX PAREN_IZQ columna PAREN_DER .)
-    IGUAL           reduce using rule 16 (funcion -> MAX PAREN_IZQ columna PAREN_DER .)
-    DESIGUAL        reduce using rule 16 (funcion -> MAX PAREN_IZQ columna PAREN_DER .)
-    MENOR_IZQ       reduce using rule 16 (funcion -> MAX PAREN_IZQ columna PAREN_DER .)
-    MEN_IGUAL_IZQ   reduce using rule 16 (funcion -> MAX PAREN_IZQ columna PAREN_DER .)
-    MAYOR_IZQ       reduce using rule 16 (funcion -> MAX PAREN_IZQ columna PAREN_DER .)
-    MAY_IGUAL_IZQ   reduce using rule 16 (funcion -> MAX PAREN_IZQ columna PAREN_DER .)
+    PALABRA         shift and go to state 46
 
 
 state 36
 
-    (17) funcion -> COUNT PAREN_IZQ columna PAREN_DER .
+    (12) funcion -> MIN PAREN_IZQ columna PAREN_DER .
 
-    COMA            reduce using rule 17 (funcion -> COUNT PAREN_IZQ columna PAREN_DER .)
-    FROM            reduce using rule 17 (funcion -> COUNT PAREN_IZQ columna PAREN_DER .)
-    IGUAL           reduce using rule 17 (funcion -> COUNT PAREN_IZQ columna PAREN_DER .)
-    DESIGUAL        reduce using rule 17 (funcion -> COUNT PAREN_IZQ columna PAREN_DER .)
-    MENOR_IZQ       reduce using rule 17 (funcion -> COUNT PAREN_IZQ columna PAREN_DER .)
-    MEN_IGUAL_IZQ   reduce using rule 17 (funcion -> COUNT PAREN_IZQ columna PAREN_DER .)
-    MAYOR_IZQ       reduce using rule 17 (funcion -> COUNT PAREN_IZQ columna PAREN_DER .)
-    MAY_IGUAL_IZQ   reduce using rule 17 (funcion -> COUNT PAREN_IZQ columna PAREN_DER .)
+    COMA            reduce using rule 12 (funcion -> MIN PAREN_IZQ columna PAREN_DER .)
+    FROM            reduce using rule 12 (funcion -> MIN PAREN_IZQ columna PAREN_DER .)
+    IGUAL           reduce using rule 12 (funcion -> MIN PAREN_IZQ columna PAREN_DER .)
+    DESIGUAL        reduce using rule 12 (funcion -> MIN PAREN_IZQ columna PAREN_DER .)
+    MENOR_IZQ       reduce using rule 12 (funcion -> MIN PAREN_IZQ columna PAREN_DER .)
+    MEN_IGUAL_IZQ   reduce using rule 12 (funcion -> MIN PAREN_IZQ columna PAREN_DER .)
+    MAYOR_IZQ       reduce using rule 12 (funcion -> MIN PAREN_IZQ columna PAREN_DER .)
+    MAY_IGUAL_IZQ   reduce using rule 12 (funcion -> MIN PAREN_IZQ columna PAREN_DER .)
 
 
 state 37
 
-    (18) funcion -> COUNT PAREN_IZQ DISTINCT columna . PAREN_DER
+    (13) funcion -> MAX PAREN_IZQ columna PAREN_DER .
 
-    PAREN_DER       shift and go to state 45
+    COMA            reduce using rule 13 (funcion -> MAX PAREN_IZQ columna PAREN_DER .)
+    FROM            reduce using rule 13 (funcion -> MAX PAREN_IZQ columna PAREN_DER .)
+    IGUAL           reduce using rule 13 (funcion -> MAX PAREN_IZQ columna PAREN_DER .)
+    DESIGUAL        reduce using rule 13 (funcion -> MAX PAREN_IZQ columna PAREN_DER .)
+    MENOR_IZQ       reduce using rule 13 (funcion -> MAX PAREN_IZQ columna PAREN_DER .)
+    MEN_IGUAL_IZQ   reduce using rule 13 (funcion -> MAX PAREN_IZQ columna PAREN_DER .)
+    MAYOR_IZQ       reduce using rule 13 (funcion -> MAX PAREN_IZQ columna PAREN_DER .)
+    MAY_IGUAL_IZQ   reduce using rule 13 (funcion -> MAX PAREN_IZQ columna PAREN_DER .)
 
 
 state 38
 
-    (1) consulta -> SELECT campos FROM tablas join where . grupos order_by
-    (24) grupos -> . group_by
-    (25) grupos -> . group_by having
-    (26) grupos -> .
-    (27) group_by -> . GROUP BY columnas
+    (14) funcion -> COUNT PAREN_IZQ columna PAREN_DER .
 
-    ORDER           reduce using rule 26 (grupos -> .)
-    GROUP           shift and go to state 48
+    COMA            reduce using rule 14 (funcion -> COUNT PAREN_IZQ columna PAREN_DER .)
+    FROM            reduce using rule 14 (funcion -> COUNT PAREN_IZQ columna PAREN_DER .)
+    IGUAL           reduce using rule 14 (funcion -> COUNT PAREN_IZQ columna PAREN_DER .)
+    DESIGUAL        reduce using rule 14 (funcion -> COUNT PAREN_IZQ columna PAREN_DER .)
+    MENOR_IZQ       reduce using rule 14 (funcion -> COUNT PAREN_IZQ columna PAREN_DER .)
+    MEN_IGUAL_IZQ   reduce using rule 14 (funcion -> COUNT PAREN_IZQ columna PAREN_DER .)
+    MAYOR_IZQ       reduce using rule 14 (funcion -> COUNT PAREN_IZQ columna PAREN_DER .)
+    MAY_IGUAL_IZQ   reduce using rule 14 (funcion -> COUNT PAREN_IZQ columna PAREN_DER .)
 
-    grupos                         shift and go to state 46
-    group_by                       shift and go to state 47
 
 state 39
 
-    (22) where -> WHERE . condiciones
-    (34) condiciones -> . condicion
-    (35) condiciones -> . condicion booleano condiciones
-    (36) condicion -> . columna operador valor
-    (37) condicion -> . columna operador columna
-    (38) condicion -> . columna IN PAREN_IZQ consulta PAREN_DER
-    (13) columna -> . PALABRA PUNTO PALABRA
-    (14) columna -> . PALABRA PUNTO PALABRA AS PALABRA
+    (15) funcion -> COUNT PAREN_IZQ DISTINCT columna . PAREN_DER
 
-    PALABRA         shift and go to state 6
+    PAREN_DER       shift and go to state 47
 
-    condiciones                    shift and go to state 49
-    condicion                      shift and go to state 50
-    columna                        shift and go to state 51
 
 state 40
 
-    (19) join -> INNER JOIN . tabla ON condicion join
-    (8) tabla -> . PALABRA
-    (9) tabla -> . PALABRA AS PALABRA
-    (10) tabla -> . PALABRA PALABRA
+    (1) consulta -> SELECT distinct campos FROM tablas join where . grupos order_by
+    (21) grupos -> . group_by
+    (22) grupos -> . group_by having
+    (23) grupos -> .
+    (24) group_by -> . GROUP BY columnas
 
-    PALABRA         shift and go to state 19
+    ORDER           reduce using rule 23 (grupos -> .)
+    $end            reduce using rule 23 (grupos -> .)
+    PAREN_DER       reduce using rule 23 (grupos -> .)
+    GROUP           shift and go to state 50
 
-    tabla                          shift and go to state 52
+    grupos                         shift and go to state 48
+    group_by                       shift and go to state 49
 
 state 41
 
-    (20) join -> LEFT JOIN . tabla ON condicion join
-    (8) tabla -> . PALABRA
-    (9) tabla -> . PALABRA AS PALABRA
-    (10) tabla -> . PALABRA PALABRA
+    (19) where -> WHERE . condiciones
+    (32) condiciones -> . condicion
+    (33) condiciones -> . condicion booleano condiciones
+    (34) condicion -> . columna operador valor
+    (35) condicion -> . columna operador columna
+    (36) condicion -> . columna IN PAREN_IZQ consulta PAREN_DER
+    (53) columna -> . PALABRA PUNTO PALABRA
+    (54) columna -> . PALABRA PUNTO PALABRA AS PALABRA
 
-    PALABRA         shift and go to state 19
+    PALABRA         shift and go to state 8
 
-    tabla                          shift and go to state 53
+    condiciones                    shift and go to state 51
+    condicion                      shift and go to state 52
+    columna                        shift and go to state 53
 
 state 42
 
-    (7) tablas -> tabla COMA tablas .
+    (16) join -> INNER JOIN . tabla ON condicion join
+    (50) tabla -> . PALABRA
+    (51) tabla -> . PALABRA AS PALABRA
+    (52) tabla -> . PALABRA PALABRA
 
-    INNER           reduce using rule 7 (tablas -> tabla COMA tablas .)
-    LEFT            reduce using rule 7 (tablas -> tabla COMA tablas .)
-    WHERE           reduce using rule 7 (tablas -> tabla COMA tablas .)
-    GROUP           reduce using rule 7 (tablas -> tabla COMA tablas .)
-    ORDER           reduce using rule 7 (tablas -> tabla COMA tablas .)
+    PALABRA         shift and go to state 21
 
+    tabla                          shift and go to state 54
 
 state 43
 
-    (9) tabla -> PALABRA AS PALABRA .
+    (17) join -> LEFT JOIN . tabla ON condicion join
+    (50) tabla -> . PALABRA
+    (51) tabla -> . PALABRA AS PALABRA
+    (52) tabla -> . PALABRA PALABRA
 
-    COMA            reduce using rule 9 (tabla -> PALABRA AS PALABRA .)
-    INNER           reduce using rule 9 (tabla -> PALABRA AS PALABRA .)
-    LEFT            reduce using rule 9 (tabla -> PALABRA AS PALABRA .)
-    WHERE           reduce using rule 9 (tabla -> PALABRA AS PALABRA .)
-    GROUP           reduce using rule 9 (tabla -> PALABRA AS PALABRA .)
-    ORDER           reduce using rule 9 (tabla -> PALABRA AS PALABRA .)
-    ON              reduce using rule 9 (tabla -> PALABRA AS PALABRA .)
+    PALABRA         shift and go to state 21
 
+    tabla                          shift and go to state 55
 
 state 44
 
-    (14) columna -> PALABRA PUNTO PALABRA AS PALABRA .
+    (9) tablas -> tabla COMA tablas .
 
-    COMA            reduce using rule 14 (columna -> PALABRA PUNTO PALABRA AS PALABRA .)
-    FROM            reduce using rule 14 (columna -> PALABRA PUNTO PALABRA AS PALABRA .)
-    PAREN_DER       reduce using rule 14 (columna -> PALABRA PUNTO PALABRA AS PALABRA .)
-    IN              reduce using rule 14 (columna -> PALABRA PUNTO PALABRA AS PALABRA .)
-    IGUAL           reduce using rule 14 (columna -> PALABRA PUNTO PALABRA AS PALABRA .)
-    DESIGUAL        reduce using rule 14 (columna -> PALABRA PUNTO PALABRA AS PALABRA .)
-    MENOR_IZQ       reduce using rule 14 (columna -> PALABRA PUNTO PALABRA AS PALABRA .)
-    MEN_IGUAL_IZQ   reduce using rule 14 (columna -> PALABRA PUNTO PALABRA AS PALABRA .)
-    MAYOR_IZQ       reduce using rule 14 (columna -> PALABRA PUNTO PALABRA AS PALABRA .)
-    MAY_IGUAL_IZQ   reduce using rule 14 (columna -> PALABRA PUNTO PALABRA AS PALABRA .)
-    HAVING          reduce using rule 14 (columna -> PALABRA PUNTO PALABRA AS PALABRA .)
-    ORDER           reduce using rule 14 (columna -> PALABRA PUNTO PALABRA AS PALABRA .)
-    AND             reduce using rule 14 (columna -> PALABRA PUNTO PALABRA AS PALABRA .)
-    OR              reduce using rule 14 (columna -> PALABRA PUNTO PALABRA AS PALABRA .)
-    GROUP           reduce using rule 14 (columna -> PALABRA PUNTO PALABRA AS PALABRA .)
-    INNER           reduce using rule 14 (columna -> PALABRA PUNTO PALABRA AS PALABRA .)
-    LEFT            reduce using rule 14 (columna -> PALABRA PUNTO PALABRA AS PALABRA .)
-    WHERE           reduce using rule 14 (columna -> PALABRA PUNTO PALABRA AS PALABRA .)
-    ASC             reduce using rule 14 (columna -> PALABRA PUNTO PALABRA AS PALABRA .)
-    DESC            reduce using rule 14 (columna -> PALABRA PUNTO PALABRA AS PALABRA .)
-    $end            reduce using rule 14 (columna -> PALABRA PUNTO PALABRA AS PALABRA .)
+    INNER           reduce using rule 9 (tablas -> tabla COMA tablas .)
+    LEFT            reduce using rule 9 (tablas -> tabla COMA tablas .)
+    WHERE           reduce using rule 9 (tablas -> tabla COMA tablas .)
+    GROUP           reduce using rule 9 (tablas -> tabla COMA tablas .)
+    ORDER           reduce using rule 9 (tablas -> tabla COMA tablas .)
+    $end            reduce using rule 9 (tablas -> tabla COMA tablas .)
+    PAREN_DER       reduce using rule 9 (tablas -> tabla COMA tablas .)
 
 
 state 45
 
-    (18) funcion -> COUNT PAREN_IZQ DISTINCT columna PAREN_DER .
+    (51) tabla -> PALABRA AS PALABRA .
 
-    COMA            reduce using rule 18 (funcion -> COUNT PAREN_IZQ DISTINCT columna PAREN_DER .)
-    FROM            reduce using rule 18 (funcion -> COUNT PAREN_IZQ DISTINCT columna PAREN_DER .)
-    IGUAL           reduce using rule 18 (funcion -> COUNT PAREN_IZQ DISTINCT columna PAREN_DER .)
-    DESIGUAL        reduce using rule 18 (funcion -> COUNT PAREN_IZQ DISTINCT columna PAREN_DER .)
-    MENOR_IZQ       reduce using rule 18 (funcion -> COUNT PAREN_IZQ DISTINCT columna PAREN_DER .)
-    MEN_IGUAL_IZQ   reduce using rule 18 (funcion -> COUNT PAREN_IZQ DISTINCT columna PAREN_DER .)
-    MAYOR_IZQ       reduce using rule 18 (funcion -> COUNT PAREN_IZQ DISTINCT columna PAREN_DER .)
-    MAY_IGUAL_IZQ   reduce using rule 18 (funcion -> COUNT PAREN_IZQ DISTINCT columna PAREN_DER .)
+    COMA            reduce using rule 51 (tabla -> PALABRA AS PALABRA .)
+    INNER           reduce using rule 51 (tabla -> PALABRA AS PALABRA .)
+    LEFT            reduce using rule 51 (tabla -> PALABRA AS PALABRA .)
+    WHERE           reduce using rule 51 (tabla -> PALABRA AS PALABRA .)
+    GROUP           reduce using rule 51 (tabla -> PALABRA AS PALABRA .)
+    ORDER           reduce using rule 51 (tabla -> PALABRA AS PALABRA .)
+    $end            reduce using rule 51 (tabla -> PALABRA AS PALABRA .)
+    PAREN_DER       reduce using rule 51 (tabla -> PALABRA AS PALABRA .)
+    ON              reduce using rule 51 (tabla -> PALABRA AS PALABRA .)
 
 
 state 46
 
-    (1) consulta -> SELECT campos FROM tablas join where grupos . order_by
-    (31) order_by -> . ORDER BY condiciones_orderby
+    (54) columna -> PALABRA PUNTO PALABRA AS PALABRA .
 
-    ORDER           shift and go to state 55
+    COMA            reduce using rule 54 (columna -> PALABRA PUNTO PALABRA AS PALABRA .)
+    FROM            reduce using rule 54 (columna -> PALABRA PUNTO PALABRA AS PALABRA .)
+    PAREN_DER       reduce using rule 54 (columna -> PALABRA PUNTO PALABRA AS PALABRA .)
+    IN              reduce using rule 54 (columna -> PALABRA PUNTO PALABRA AS PALABRA .)
+    IGUAL           reduce using rule 54 (columna -> PALABRA PUNTO PALABRA AS PALABRA .)
+    DESIGUAL        reduce using rule 54 (columna -> PALABRA PUNTO PALABRA AS PALABRA .)
+    MENOR_IZQ       reduce using rule 54 (columna -> PALABRA PUNTO PALABRA AS PALABRA .)
+    MEN_IGUAL_IZQ   reduce using rule 54 (columna -> PALABRA PUNTO PALABRA AS PALABRA .)
+    MAYOR_IZQ       reduce using rule 54 (columna -> PALABRA PUNTO PALABRA AS PALABRA .)
+    MAY_IGUAL_IZQ   reduce using rule 54 (columna -> PALABRA PUNTO PALABRA AS PALABRA .)
+    HAVING          reduce using rule 54 (columna -> PALABRA PUNTO PALABRA AS PALABRA .)
+    ORDER           reduce using rule 54 (columna -> PALABRA PUNTO PALABRA AS PALABRA .)
+    $end            reduce using rule 54 (columna -> PALABRA PUNTO PALABRA AS PALABRA .)
+    AND             reduce using rule 54 (columna -> PALABRA PUNTO PALABRA AS PALABRA .)
+    OR              reduce using rule 54 (columna -> PALABRA PUNTO PALABRA AS PALABRA .)
+    GROUP           reduce using rule 54 (columna -> PALABRA PUNTO PALABRA AS PALABRA .)
+    INNER           reduce using rule 54 (columna -> PALABRA PUNTO PALABRA AS PALABRA .)
+    LEFT            reduce using rule 54 (columna -> PALABRA PUNTO PALABRA AS PALABRA .)
+    WHERE           reduce using rule 54 (columna -> PALABRA PUNTO PALABRA AS PALABRA .)
+    ASC             reduce using rule 54 (columna -> PALABRA PUNTO PALABRA AS PALABRA .)
+    DESC            reduce using rule 54 (columna -> PALABRA PUNTO PALABRA AS PALABRA .)
 
-    order_by                       shift and go to state 54
 
 state 47
 
-    (24) grupos -> group_by .
-    (25) grupos -> group_by . having
-    (28) having -> . HAVING condiciones_having
+    (15) funcion -> COUNT PAREN_IZQ DISTINCT columna PAREN_DER .
 
-    ORDER           reduce using rule 24 (grupos -> group_by .)
-    HAVING          shift and go to state 57
+    COMA            reduce using rule 15 (funcion -> COUNT PAREN_IZQ DISTINCT columna PAREN_DER .)
+    FROM            reduce using rule 15 (funcion -> COUNT PAREN_IZQ DISTINCT columna PAREN_DER .)
+    IGUAL           reduce using rule 15 (funcion -> COUNT PAREN_IZQ DISTINCT columna PAREN_DER .)
+    DESIGUAL        reduce using rule 15 (funcion -> COUNT PAREN_IZQ DISTINCT columna PAREN_DER .)
+    MENOR_IZQ       reduce using rule 15 (funcion -> COUNT PAREN_IZQ DISTINCT columna PAREN_DER .)
+    MEN_IGUAL_IZQ   reduce using rule 15 (funcion -> COUNT PAREN_IZQ DISTINCT columna PAREN_DER .)
+    MAYOR_IZQ       reduce using rule 15 (funcion -> COUNT PAREN_IZQ DISTINCT columna PAREN_DER .)
+    MAY_IGUAL_IZQ   reduce using rule 15 (funcion -> COUNT PAREN_IZQ DISTINCT columna PAREN_DER .)
 
-    having                         shift and go to state 56
 
 state 48
 
-    (27) group_by -> GROUP . BY columnas
+    (1) consulta -> SELECT distinct campos FROM tablas join where grupos . order_by
+    (28) order_by -> . ORDER BY condiciones_orderby
+    (29) order_by -> .
 
-    BY              shift and go to state 58
+    ORDER           shift and go to state 57
+    $end            reduce using rule 29 (order_by -> .)
+    PAREN_DER       reduce using rule 29 (order_by -> .)
 
+    order_by                       shift and go to state 56
 
 state 49
 
-    (22) where -> WHERE condiciones .
+    (21) grupos -> group_by .
+    (22) grupos -> group_by . having
+    (25) having -> . HAVING condiciones_having
 
-    GROUP           reduce using rule 22 (where -> WHERE condiciones .)
-    ORDER           reduce using rule 22 (where -> WHERE condiciones .)
+    ORDER           reduce using rule 21 (grupos -> group_by .)
+    $end            reduce using rule 21 (grupos -> group_by .)
+    PAREN_DER       reduce using rule 21 (grupos -> group_by .)
+    HAVING          shift and go to state 59
 
+    having                         shift and go to state 58
 
 state 50
 
-    (34) condiciones -> condicion .
-    (35) condiciones -> condicion . booleano condiciones
-    (47) booleano -> . AND
-    (48) booleano -> . OR
+    (24) group_by -> GROUP . BY columnas
 
-    GROUP           reduce using rule 34 (condiciones -> condicion .)
-    ORDER           reduce using rule 34 (condiciones -> condicion .)
-    AND             shift and go to state 60
-    OR              shift and go to state 61
+    BY              shift and go to state 60
 
-    booleano                       shift and go to state 59
 
 state 51
 
-    (36) condicion -> columna . operador valor
-    (37) condicion -> columna . operador columna
-    (38) condicion -> columna . IN PAREN_IZQ consulta PAREN_DER
-    (41) operador -> . IGUAL
-    (42) operador -> . DESIGUAL
-    (43) operador -> . MENOR_IZQ
-    (44) operador -> . MEN_IGUAL_IZQ
-    (45) operador -> . MAYOR_IZQ
-    (46) operador -> . MAY_IGUAL_IZQ
+    (19) where -> WHERE condiciones .
 
-    IN              shift and go to state 63
-    IGUAL           shift and go to state 64
-    DESIGUAL        shift and go to state 65
-    MENOR_IZQ       shift and go to state 66
-    MEN_IGUAL_IZQ   shift and go to state 67
-    MAYOR_IZQ       shift and go to state 68
-    MAY_IGUAL_IZQ   shift and go to state 69
+    GROUP           reduce using rule 19 (where -> WHERE condiciones .)
+    ORDER           reduce using rule 19 (where -> WHERE condiciones .)
+    $end            reduce using rule 19 (where -> WHERE condiciones .)
+    PAREN_DER       reduce using rule 19 (where -> WHERE condiciones .)
 
-    operador                       shift and go to state 62
 
 state 52
 
-    (19) join -> INNER JOIN tabla . ON condicion join
+    (32) condiciones -> condicion .
+    (33) condiciones -> condicion . booleano condiciones
+    (45) booleano -> . AND
+    (46) booleano -> . OR
 
-    ON              shift and go to state 70
+    GROUP           reduce using rule 32 (condiciones -> condicion .)
+    ORDER           reduce using rule 32 (condiciones -> condicion .)
+    $end            reduce using rule 32 (condiciones -> condicion .)
+    PAREN_DER       reduce using rule 32 (condiciones -> condicion .)
+    AND             shift and go to state 62
+    OR              shift and go to state 63
 
+    booleano                       shift and go to state 61
 
 state 53
 
-    (20) join -> LEFT JOIN tabla . ON condicion join
+    (34) condicion -> columna . operador valor
+    (35) condicion -> columna . operador columna
+    (36) condicion -> columna . IN PAREN_IZQ consulta PAREN_DER
+    (39) operador -> . IGUAL
+    (40) operador -> . DESIGUAL
+    (41) operador -> . MENOR_IZQ
+    (42) operador -> . MEN_IGUAL_IZQ
+    (43) operador -> . MAYOR_IZQ
+    (44) operador -> . MAY_IGUAL_IZQ
 
-    ON              shift and go to state 71
+    IN              shift and go to state 65
+    IGUAL           shift and go to state 66
+    DESIGUAL        shift and go to state 67
+    MENOR_IZQ       shift and go to state 68
+    MEN_IGUAL_IZQ   shift and go to state 69
+    MAYOR_IZQ       shift and go to state 70
+    MAY_IGUAL_IZQ   shift and go to state 71
 
+    operador                       shift and go to state 64
 
 state 54
 
-    (1) consulta -> SELECT campos FROM tablas join where grupos order_by .
+    (16) join -> INNER JOIN tabla . ON condicion join
 
-    $end            reduce using rule 1 (consulta -> SELECT campos FROM tablas join where grupos order_by .)
-    PAREN_DER       reduce using rule 1 (consulta -> SELECT campos FROM tablas join where grupos order_by .)
+    ON              shift and go to state 72
 
 
 state 55
 
-    (31) order_by -> ORDER . BY condiciones_orderby
+    (17) join -> LEFT JOIN tabla . ON condicion join
 
-    BY              shift and go to state 72
+    ON              shift and go to state 73
 
 
 state 56
 
-    (25) grupos -> group_by having .
+    (1) consulta -> SELECT distinct campos FROM tablas join where grupos order_by .
 
-    ORDER           reduce using rule 25 (grupos -> group_by having .)
+    $end            reduce using rule 1 (consulta -> SELECT distinct campos FROM tablas join where grupos order_by .)
+    PAREN_DER       reduce using rule 1 (consulta -> SELECT distinct campos FROM tablas join where grupos order_by .)
 
 
 state 57
 
-    (28) having -> HAVING . condiciones_having
-    (29) condiciones_having -> . funcion operador valor
-    (30) condiciones_having -> . funcion operador valor COMA condiciones_having
-    (15) funcion -> . MIN PAREN_IZQ columna PAREN_DER
-    (16) funcion -> . MAX PAREN_IZQ columna PAREN_DER
-    (17) funcion -> . COUNT PAREN_IZQ columna PAREN_DER
-    (18) funcion -> . COUNT PAREN_IZQ DISTINCT columna PAREN_DER
+    (28) order_by -> ORDER . BY condiciones_orderby
 
-    MIN             shift and go to state 7
-    MAX             shift and go to state 8
-    COUNT           shift and go to state 9
+    BY              shift and go to state 74
 
-    condiciones_having             shift and go to state 73
-    funcion                        shift and go to state 74
 
 state 58
 
-    (27) group_by -> GROUP BY . columnas
-    (11) columnas -> . columna
-    (12) columnas -> . columna COMA columnas
-    (13) columna -> . PALABRA PUNTO PALABRA
-    (14) columna -> . PALABRA PUNTO PALABRA AS PALABRA
+    (22) grupos -> group_by having .
 
-    PALABRA         shift and go to state 6
+    ORDER           reduce using rule 22 (grupos -> group_by having .)
+    $end            reduce using rule 22 (grupos -> group_by having .)
+    PAREN_DER       reduce using rule 22 (grupos -> group_by having .)
 
-    columnas                       shift and go to state 75
-    columna                        shift and go to state 76
 
 state 59
 
-    (35) condiciones -> condicion booleano . condiciones
-    (34) condiciones -> . condicion
-    (35) condiciones -> . condicion booleano condiciones
-    (36) condicion -> . columna operador valor
-    (37) condicion -> . columna operador columna
-    (38) condicion -> . columna IN PAREN_IZQ consulta PAREN_DER
-    (13) columna -> . PALABRA PUNTO PALABRA
-    (14) columna -> . PALABRA PUNTO PALABRA AS PALABRA
+    (25) having -> HAVING . condiciones_having
+    (26) condiciones_having -> . funcion operador valor
+    (27) condiciones_having -> . funcion operador valor COMA condiciones_having
+    (12) funcion -> . MIN PAREN_IZQ columna PAREN_DER
+    (13) funcion -> . MAX PAREN_IZQ columna PAREN_DER
+    (14) funcion -> . COUNT PAREN_IZQ columna PAREN_DER
+    (15) funcion -> . COUNT PAREN_IZQ DISTINCT columna PAREN_DER
 
-    PALABRA         shift and go to state 6
+    MIN             shift and go to state 9
+    MAX             shift and go to state 10
+    COUNT           shift and go to state 11
 
-    condicion                      shift and go to state 50
-    condiciones                    shift and go to state 77
-    columna                        shift and go to state 51
+    condiciones_having             shift and go to state 75
+    funcion                        shift and go to state 76
 
 state 60
 
-    (47) booleano -> AND .
+    (24) group_by -> GROUP BY . columnas
+    (10) columnas -> . columna
+    (11) columnas -> . columna COMA columnas
+    (53) columna -> . PALABRA PUNTO PALABRA
+    (54) columna -> . PALABRA PUNTO PALABRA AS PALABRA
 
-    PALABRA         reduce using rule 47 (booleano -> AND .)
+    PALABRA         shift and go to state 8
 
+    columnas                       shift and go to state 77
+    columna                        shift and go to state 78
 
 state 61
 
-    (48) booleano -> OR .
+    (33) condiciones -> condicion booleano . condiciones
+    (32) condiciones -> . condicion
+    (33) condiciones -> . condicion booleano condiciones
+    (34) condicion -> . columna operador valor
+    (35) condicion -> . columna operador columna
+    (36) condicion -> . columna IN PAREN_IZQ consulta PAREN_DER
+    (53) columna -> . PALABRA PUNTO PALABRA
+    (54) columna -> . PALABRA PUNTO PALABRA AS PALABRA
 
-    PALABRA         reduce using rule 48 (booleano -> OR .)
+    PALABRA         shift and go to state 8
 
+    condicion                      shift and go to state 52
+    condiciones                    shift and go to state 79
+    columna                        shift and go to state 53
 
 state 62
 
-    (36) condicion -> columna operador . valor
-    (37) condicion -> columna operador . columna
-    (39) valor -> . NUMERO
-    (40) valor -> . COMILLA PALABRA COMILLA
-    (13) columna -> . PALABRA PUNTO PALABRA
-    (14) columna -> . PALABRA PUNTO PALABRA AS PALABRA
+    (45) booleano -> AND .
 
-    NUMERO          shift and go to state 80
-    COMILLA         shift and go to state 81
-    PALABRA         shift and go to state 6
+    PALABRA         reduce using rule 45 (booleano -> AND .)
 
-    columna                        shift and go to state 78
-    valor                          shift and go to state 79
 
 state 63
 
-    (38) condicion -> columna IN . PAREN_IZQ consulta PAREN_DER
+    (46) booleano -> OR .
 
-    PAREN_IZQ       shift and go to state 82
+    PALABRA         reduce using rule 46 (booleano -> OR .)
 
 
 state 64
 
-    (41) operador -> IGUAL .
+    (34) condicion -> columna operador . valor
+    (35) condicion -> columna operador . columna
+    (37) valor -> . NUMERO
+    (38) valor -> . COMILLA PALABRA COMILLA
+    (53) columna -> . PALABRA PUNTO PALABRA
+    (54) columna -> . PALABRA PUNTO PALABRA AS PALABRA
 
-    NUMERO          reduce using rule 41 (operador -> IGUAL .)
-    COMILLA         reduce using rule 41 (operador -> IGUAL .)
-    PALABRA         reduce using rule 41 (operador -> IGUAL .)
+    NUMERO          shift and go to state 82
+    COMILLA         shift and go to state 83
+    PALABRA         shift and go to state 8
 
+    columna                        shift and go to state 80
+    valor                          shift and go to state 81
 
 state 65
 
-    (42) operador -> DESIGUAL .
+    (36) condicion -> columna IN . PAREN_IZQ consulta PAREN_DER
 
-    NUMERO          reduce using rule 42 (operador -> DESIGUAL .)
-    COMILLA         reduce using rule 42 (operador -> DESIGUAL .)
-    PALABRA         reduce using rule 42 (operador -> DESIGUAL .)
+    PAREN_IZQ       shift and go to state 84
 
 
 state 66
 
-    (43) operador -> MENOR_IZQ .
+    (39) operador -> IGUAL .
 
-    NUMERO          reduce using rule 43 (operador -> MENOR_IZQ .)
-    COMILLA         reduce using rule 43 (operador -> MENOR_IZQ .)
-    PALABRA         reduce using rule 43 (operador -> MENOR_IZQ .)
+    NUMERO          reduce using rule 39 (operador -> IGUAL .)
+    COMILLA         reduce using rule 39 (operador -> IGUAL .)
+    PALABRA         reduce using rule 39 (operador -> IGUAL .)
 
 
 state 67
 
-    (44) operador -> MEN_IGUAL_IZQ .
+    (40) operador -> DESIGUAL .
 
-    NUMERO          reduce using rule 44 (operador -> MEN_IGUAL_IZQ .)
-    COMILLA         reduce using rule 44 (operador -> MEN_IGUAL_IZQ .)
-    PALABRA         reduce using rule 44 (operador -> MEN_IGUAL_IZQ .)
+    NUMERO          reduce using rule 40 (operador -> DESIGUAL .)
+    COMILLA         reduce using rule 40 (operador -> DESIGUAL .)
+    PALABRA         reduce using rule 40 (operador -> DESIGUAL .)
 
 
 state 68
 
-    (45) operador -> MAYOR_IZQ .
+    (41) operador -> MENOR_IZQ .
 
-    NUMERO          reduce using rule 45 (operador -> MAYOR_IZQ .)
-    COMILLA         reduce using rule 45 (operador -> MAYOR_IZQ .)
-    PALABRA         reduce using rule 45 (operador -> MAYOR_IZQ .)
+    NUMERO          reduce using rule 41 (operador -> MENOR_IZQ .)
+    COMILLA         reduce using rule 41 (operador -> MENOR_IZQ .)
+    PALABRA         reduce using rule 41 (operador -> MENOR_IZQ .)
 
 
 state 69
 
-    (46) operador -> MAY_IGUAL_IZQ .
+    (42) operador -> MEN_IGUAL_IZQ .
 
-    NUMERO          reduce using rule 46 (operador -> MAY_IGUAL_IZQ .)
-    COMILLA         reduce using rule 46 (operador -> MAY_IGUAL_IZQ .)
-    PALABRA         reduce using rule 46 (operador -> MAY_IGUAL_IZQ .)
+    NUMERO          reduce using rule 42 (operador -> MEN_IGUAL_IZQ .)
+    COMILLA         reduce using rule 42 (operador -> MEN_IGUAL_IZQ .)
+    PALABRA         reduce using rule 42 (operador -> MEN_IGUAL_IZQ .)
 
 
 state 70
 
-    (19) join -> INNER JOIN tabla ON . condicion join
-    (36) condicion -> . columna operador valor
-    (37) condicion -> . columna operador columna
-    (38) condicion -> . columna IN PAREN_IZQ consulta PAREN_DER
-    (13) columna -> . PALABRA PUNTO PALABRA
-    (14) columna -> . PALABRA PUNTO PALABRA AS PALABRA
+    (43) operador -> MAYOR_IZQ .
 
-    PALABRA         shift and go to state 6
+    NUMERO          reduce using rule 43 (operador -> MAYOR_IZQ .)
+    COMILLA         reduce using rule 43 (operador -> MAYOR_IZQ .)
+    PALABRA         reduce using rule 43 (operador -> MAYOR_IZQ .)
 
-    condicion                      shift and go to state 83
-    columna                        shift and go to state 51
 
 state 71
 
-    (20) join -> LEFT JOIN tabla ON . condicion join
-    (36) condicion -> . columna operador valor
-    (37) condicion -> . columna operador columna
-    (38) condicion -> . columna IN PAREN_IZQ consulta PAREN_DER
-    (13) columna -> . PALABRA PUNTO PALABRA
-    (14) columna -> . PALABRA PUNTO PALABRA AS PALABRA
+    (44) operador -> MAY_IGUAL_IZQ .
 
-    PALABRA         shift and go to state 6
+    NUMERO          reduce using rule 44 (operador -> MAY_IGUAL_IZQ .)
+    COMILLA         reduce using rule 44 (operador -> MAY_IGUAL_IZQ .)
+    PALABRA         reduce using rule 44 (operador -> MAY_IGUAL_IZQ .)
 
-    condicion                      shift and go to state 84
-    columna                        shift and go to state 51
 
 state 72
 
-    (31) order_by -> ORDER BY . condiciones_orderby
-    (32) condiciones_orderby -> . columna orden
-    (33) condiciones_orderby -> . columna orden COMA condiciones_orderby
-    (13) columna -> . PALABRA PUNTO PALABRA
-    (14) columna -> . PALABRA PUNTO PALABRA AS PALABRA
+    (16) join -> INNER JOIN tabla ON . condicion join
+    (34) condicion -> . columna operador valor
+    (35) condicion -> . columna operador columna
+    (36) condicion -> . columna IN PAREN_IZQ consulta PAREN_DER
+    (53) columna -> . PALABRA PUNTO PALABRA
+    (54) columna -> . PALABRA PUNTO PALABRA AS PALABRA
 
-    PALABRA         shift and go to state 6
+    PALABRA         shift and go to state 8
 
-    condiciones_orderby            shift and go to state 85
-    columna                        shift and go to state 86
+    condicion                      shift and go to state 85
+    columna                        shift and go to state 53
 
 state 73
 
-    (28) having -> HAVING condiciones_having .
+    (17) join -> LEFT JOIN tabla ON . condicion join
+    (34) condicion -> . columna operador valor
+    (35) condicion -> . columna operador columna
+    (36) condicion -> . columna IN PAREN_IZQ consulta PAREN_DER
+    (53) columna -> . PALABRA PUNTO PALABRA
+    (54) columna -> . PALABRA PUNTO PALABRA AS PALABRA
 
-    ORDER           reduce using rule 28 (having -> HAVING condiciones_having .)
+    PALABRA         shift and go to state 8
 
+    condicion                      shift and go to state 86
+    columna                        shift and go to state 53
 
 state 74
 
-    (29) condiciones_having -> funcion . operador valor
-    (30) condiciones_having -> funcion . operador valor COMA condiciones_having
-    (41) operador -> . IGUAL
-    (42) operador -> . DESIGUAL
-    (43) operador -> . MENOR_IZQ
-    (44) operador -> . MEN_IGUAL_IZQ
-    (45) operador -> . MAYOR_IZQ
-    (46) operador -> . MAY_IGUAL_IZQ
+    (28) order_by -> ORDER BY . condiciones_orderby
+    (30) condiciones_orderby -> . columna orden
+    (31) condiciones_orderby -> . columna orden COMA condiciones_orderby
+    (53) columna -> . PALABRA PUNTO PALABRA
+    (54) columna -> . PALABRA PUNTO PALABRA AS PALABRA
 
-    IGUAL           shift and go to state 64
-    DESIGUAL        shift and go to state 65
-    MENOR_IZQ       shift and go to state 66
-    MEN_IGUAL_IZQ   shift and go to state 67
-    MAYOR_IZQ       shift and go to state 68
-    MAY_IGUAL_IZQ   shift and go to state 69
+    PALABRA         shift and go to state 8
 
-    operador                       shift and go to state 87
+    condiciones_orderby            shift and go to state 87
+    columna                        shift and go to state 88
 
 state 75
 
-    (27) group_by -> GROUP BY columnas .
+    (25) having -> HAVING condiciones_having .
 
-    HAVING          reduce using rule 27 (group_by -> GROUP BY columnas .)
-    ORDER           reduce using rule 27 (group_by -> GROUP BY columnas .)
+    ORDER           reduce using rule 25 (having -> HAVING condiciones_having .)
+    $end            reduce using rule 25 (having -> HAVING condiciones_having .)
+    PAREN_DER       reduce using rule 25 (having -> HAVING condiciones_having .)
 
 
 state 76
 
-    (11) columnas -> columna .
-    (12) columnas -> columna . COMA columnas
+    (26) condiciones_having -> funcion . operador valor
+    (27) condiciones_having -> funcion . operador valor COMA condiciones_having
+    (39) operador -> . IGUAL
+    (40) operador -> . DESIGUAL
+    (41) operador -> . MENOR_IZQ
+    (42) operador -> . MEN_IGUAL_IZQ
+    (43) operador -> . MAYOR_IZQ
+    (44) operador -> . MAY_IGUAL_IZQ
 
-    HAVING          reduce using rule 11 (columnas -> columna .)
-    ORDER           reduce using rule 11 (columnas -> columna .)
-    COMA            shift and go to state 88
+    IGUAL           shift and go to state 66
+    DESIGUAL        shift and go to state 67
+    MENOR_IZQ       shift and go to state 68
+    MEN_IGUAL_IZQ   shift and go to state 69
+    MAYOR_IZQ       shift and go to state 70
+    MAY_IGUAL_IZQ   shift and go to state 71
 
+    operador                       shift and go to state 89
 
 state 77
 
-    (35) condiciones -> condicion booleano condiciones .
+    (24) group_by -> GROUP BY columnas .
 
-    GROUP           reduce using rule 35 (condiciones -> condicion booleano condiciones .)
-    ORDER           reduce using rule 35 (condiciones -> condicion booleano condiciones .)
+    HAVING          reduce using rule 24 (group_by -> GROUP BY columnas .)
+    ORDER           reduce using rule 24 (group_by -> GROUP BY columnas .)
+    $end            reduce using rule 24 (group_by -> GROUP BY columnas .)
+    PAREN_DER       reduce using rule 24 (group_by -> GROUP BY columnas .)
 
 
 state 78
 
-    (37) condicion -> columna operador columna .
+    (10) columnas -> columna .
+    (11) columnas -> columna . COMA columnas
 
-    AND             reduce using rule 37 (condicion -> columna operador columna .)
-    OR              reduce using rule 37 (condicion -> columna operador columna .)
-    GROUP           reduce using rule 37 (condicion -> columna operador columna .)
-    ORDER           reduce using rule 37 (condicion -> columna operador columna .)
-    INNER           reduce using rule 37 (condicion -> columna operador columna .)
-    LEFT            reduce using rule 37 (condicion -> columna operador columna .)
-    WHERE           reduce using rule 37 (condicion -> columna operador columna .)
+    HAVING          reduce using rule 10 (columnas -> columna .)
+    ORDER           reduce using rule 10 (columnas -> columna .)
+    $end            reduce using rule 10 (columnas -> columna .)
+    PAREN_DER       reduce using rule 10 (columnas -> columna .)
+    COMA            shift and go to state 90
 
 
 state 79
 
-    (36) condicion -> columna operador valor .
+    (33) condiciones -> condicion booleano condiciones .
 
-    AND             reduce using rule 36 (condicion -> columna operador valor .)
-    OR              reduce using rule 36 (condicion -> columna operador valor .)
-    GROUP           reduce using rule 36 (condicion -> columna operador valor .)
-    ORDER           reduce using rule 36 (condicion -> columna operador valor .)
-    INNER           reduce using rule 36 (condicion -> columna operador valor .)
-    LEFT            reduce using rule 36 (condicion -> columna operador valor .)
-    WHERE           reduce using rule 36 (condicion -> columna operador valor .)
+    GROUP           reduce using rule 33 (condiciones -> condicion booleano condiciones .)
+    ORDER           reduce using rule 33 (condiciones -> condicion booleano condiciones .)
+    $end            reduce using rule 33 (condiciones -> condicion booleano condiciones .)
+    PAREN_DER       reduce using rule 33 (condiciones -> condicion booleano condiciones .)
 
 
 state 80
 
-    (39) valor -> NUMERO .
+    (35) condicion -> columna operador columna .
 
-    AND             reduce using rule 39 (valor -> NUMERO .)
-    OR              reduce using rule 39 (valor -> NUMERO .)
-    GROUP           reduce using rule 39 (valor -> NUMERO .)
-    ORDER           reduce using rule 39 (valor -> NUMERO .)
-    INNER           reduce using rule 39 (valor -> NUMERO .)
-    LEFT            reduce using rule 39 (valor -> NUMERO .)
-    WHERE           reduce using rule 39 (valor -> NUMERO .)
-    COMA            reduce using rule 39 (valor -> NUMERO .)
+    AND             reduce using rule 35 (condicion -> columna operador columna .)
+    OR              reduce using rule 35 (condicion -> columna operador columna .)
+    GROUP           reduce using rule 35 (condicion -> columna operador columna .)
+    ORDER           reduce using rule 35 (condicion -> columna operador columna .)
+    $end            reduce using rule 35 (condicion -> columna operador columna .)
+    PAREN_DER       reduce using rule 35 (condicion -> columna operador columna .)
+    INNER           reduce using rule 35 (condicion -> columna operador columna .)
+    LEFT            reduce using rule 35 (condicion -> columna operador columna .)
+    WHERE           reduce using rule 35 (condicion -> columna operador columna .)
 
 
 state 81
 
-    (40) valor -> COMILLA . PALABRA COMILLA
+    (34) condicion -> columna operador valor .
 
-    PALABRA         shift and go to state 89
+    AND             reduce using rule 34 (condicion -> columna operador valor .)
+    OR              reduce using rule 34 (condicion -> columna operador valor .)
+    GROUP           reduce using rule 34 (condicion -> columna operador valor .)
+    ORDER           reduce using rule 34 (condicion -> columna operador valor .)
+    $end            reduce using rule 34 (condicion -> columna operador valor .)
+    PAREN_DER       reduce using rule 34 (condicion -> columna operador valor .)
+    INNER           reduce using rule 34 (condicion -> columna operador valor .)
+    LEFT            reduce using rule 34 (condicion -> columna operador valor .)
+    WHERE           reduce using rule 34 (condicion -> columna operador valor .)
 
 
 state 82
 
-    (38) condicion -> columna IN PAREN_IZQ . consulta PAREN_DER
-    (1) consulta -> . SELECT campos FROM tablas join where grupos order_by
+    (37) valor -> NUMERO .
 
-    SELECT          shift and go to state 2
+    AND             reduce using rule 37 (valor -> NUMERO .)
+    OR              reduce using rule 37 (valor -> NUMERO .)
+    GROUP           reduce using rule 37 (valor -> NUMERO .)
+    ORDER           reduce using rule 37 (valor -> NUMERO .)
+    $end            reduce using rule 37 (valor -> NUMERO .)
+    PAREN_DER       reduce using rule 37 (valor -> NUMERO .)
+    INNER           reduce using rule 37 (valor -> NUMERO .)
+    LEFT            reduce using rule 37 (valor -> NUMERO .)
+    WHERE           reduce using rule 37 (valor -> NUMERO .)
+    COMA            reduce using rule 37 (valor -> NUMERO .)
 
-    consulta                       shift and go to state 90
 
 state 83
 
-    (19) join -> INNER JOIN tabla ON condicion . join
-    (19) join -> . INNER JOIN tabla ON condicion join
-    (20) join -> . LEFT JOIN tabla ON condicion join
-    (21) join -> .
+    (38) valor -> COMILLA . PALABRA COMILLA
 
-    INNER           shift and go to state 28
-    LEFT            shift and go to state 29
-    WHERE           reduce using rule 21 (join -> .)
-    GROUP           reduce using rule 21 (join -> .)
-    ORDER           reduce using rule 21 (join -> .)
+    PALABRA         shift and go to state 91
 
-    join                           shift and go to state 91
 
 state 84
 
-    (20) join -> LEFT JOIN tabla ON condicion . join
-    (19) join -> . INNER JOIN tabla ON condicion join
-    (20) join -> . LEFT JOIN tabla ON condicion join
-    (21) join -> .
+    (36) condicion -> columna IN PAREN_IZQ . consulta PAREN_DER
+    (1) consulta -> . SELECT distinct campos FROM tablas join where grupos order_by
 
-    INNER           shift and go to state 28
-    LEFT            shift and go to state 29
-    WHERE           reduce using rule 21 (join -> .)
-    GROUP           reduce using rule 21 (join -> .)
-    ORDER           reduce using rule 21 (join -> .)
+    SELECT          shift and go to state 2
 
-    join                           shift and go to state 92
+    consulta                       shift and go to state 92
 
 state 85
 
-    (31) order_by -> ORDER BY condiciones_orderby .
+    (16) join -> INNER JOIN tabla ON condicion . join
+    (16) join -> . INNER JOIN tabla ON condicion join
+    (17) join -> . LEFT JOIN tabla ON condicion join
+    (18) join -> .
 
-    $end            reduce using rule 31 (order_by -> ORDER BY condiciones_orderby .)
-    PAREN_DER       reduce using rule 31 (order_by -> ORDER BY condiciones_orderby .)
+    INNER           shift and go to state 30
+    LEFT            shift and go to state 31
+    WHERE           reduce using rule 18 (join -> .)
+    GROUP           reduce using rule 18 (join -> .)
+    ORDER           reduce using rule 18 (join -> .)
+    $end            reduce using rule 18 (join -> .)
+    PAREN_DER       reduce using rule 18 (join -> .)
 
+    join                           shift and go to state 93
 
 state 86
 
-    (32) condiciones_orderby -> columna . orden
-    (33) condiciones_orderby -> columna . orden COMA condiciones_orderby
-    (49) orden -> . ASC
-    (50) orden -> . DESC
-    (51) orden -> .
+    (17) join -> LEFT JOIN tabla ON condicion . join
+    (16) join -> . INNER JOIN tabla ON condicion join
+    (17) join -> . LEFT JOIN tabla ON condicion join
+    (18) join -> .
 
-    ASC             shift and go to state 94
-    DESC            shift and go to state 95
-    COMA            reduce using rule 51 (orden -> .)
-    $end            reduce using rule 51 (orden -> .)
-    PAREN_DER       reduce using rule 51 (orden -> .)
+    INNER           shift and go to state 30
+    LEFT            shift and go to state 31
+    WHERE           reduce using rule 18 (join -> .)
+    GROUP           reduce using rule 18 (join -> .)
+    ORDER           reduce using rule 18 (join -> .)
+    $end            reduce using rule 18 (join -> .)
+    PAREN_DER       reduce using rule 18 (join -> .)
 
-    orden                          shift and go to state 93
+    join                           shift and go to state 94
 
 state 87
 
-    (29) condiciones_having -> funcion operador . valor
-    (30) condiciones_having -> funcion operador . valor COMA condiciones_having
-    (39) valor -> . NUMERO
-    (40) valor -> . COMILLA PALABRA COMILLA
+    (28) order_by -> ORDER BY condiciones_orderby .
 
-    NUMERO          shift and go to state 80
-    COMILLA         shift and go to state 81
+    $end            reduce using rule 28 (order_by -> ORDER BY condiciones_orderby .)
+    PAREN_DER       reduce using rule 28 (order_by -> ORDER BY condiciones_orderby .)
 
-    valor                          shift and go to state 96
 
 state 88
 
-    (12) columnas -> columna COMA . columnas
-    (11) columnas -> . columna
-    (12) columnas -> . columna COMA columnas
-    (13) columna -> . PALABRA PUNTO PALABRA
-    (14) columna -> . PALABRA PUNTO PALABRA AS PALABRA
+    (30) condiciones_orderby -> columna . orden
+    (31) condiciones_orderby -> columna . orden COMA condiciones_orderby
+    (47) orden -> . ASC
+    (48) orden -> . DESC
+    (49) orden -> .
 
-    PALABRA         shift and go to state 6
+    ASC             shift and go to state 96
+    DESC            shift and go to state 97
+    COMA            reduce using rule 49 (orden -> .)
+    $end            reduce using rule 49 (orden -> .)
+    PAREN_DER       reduce using rule 49 (orden -> .)
 
-    columna                        shift and go to state 76
-    columnas                       shift and go to state 97
+    orden                          shift and go to state 95
 
 state 89
 
-    (40) valor -> COMILLA PALABRA . COMILLA
+    (26) condiciones_having -> funcion operador . valor
+    (27) condiciones_having -> funcion operador . valor COMA condiciones_having
+    (37) valor -> . NUMERO
+    (38) valor -> . COMILLA PALABRA COMILLA
 
-    COMILLA         shift and go to state 98
+    NUMERO          shift and go to state 82
+    COMILLA         shift and go to state 83
 
+    valor                          shift and go to state 98
 
 state 90
 
-    (38) condicion -> columna IN PAREN_IZQ consulta . PAREN_DER
+    (11) columnas -> columna COMA . columnas
+    (10) columnas -> . columna
+    (11) columnas -> . columna COMA columnas
+    (53) columna -> . PALABRA PUNTO PALABRA
+    (54) columna -> . PALABRA PUNTO PALABRA AS PALABRA
 
-    PAREN_DER       shift and go to state 99
+    PALABRA         shift and go to state 8
 
+    columna                        shift and go to state 78
+    columnas                       shift and go to state 99
 
 state 91
 
-    (19) join -> INNER JOIN tabla ON condicion join .
+    (38) valor -> COMILLA PALABRA . COMILLA
 
-    WHERE           reduce using rule 19 (join -> INNER JOIN tabla ON condicion join .)
-    GROUP           reduce using rule 19 (join -> INNER JOIN tabla ON condicion join .)
-    ORDER           reduce using rule 19 (join -> INNER JOIN tabla ON condicion join .)
+    COMILLA         shift and go to state 100
 
 
 state 92
 
-    (20) join -> LEFT JOIN tabla ON condicion join .
+    (36) condicion -> columna IN PAREN_IZQ consulta . PAREN_DER
 
-    WHERE           reduce using rule 20 (join -> LEFT JOIN tabla ON condicion join .)
-    GROUP           reduce using rule 20 (join -> LEFT JOIN tabla ON condicion join .)
-    ORDER           reduce using rule 20 (join -> LEFT JOIN tabla ON condicion join .)
+    PAREN_DER       shift and go to state 101
 
 
 state 93
 
-    (32) condiciones_orderby -> columna orden .
-    (33) condiciones_orderby -> columna orden . COMA condiciones_orderby
+    (16) join -> INNER JOIN tabla ON condicion join .
 
-    $end            reduce using rule 32 (condiciones_orderby -> columna orden .)
-    PAREN_DER       reduce using rule 32 (condiciones_orderby -> columna orden .)
-    COMA            shift and go to state 100
+    WHERE           reduce using rule 16 (join -> INNER JOIN tabla ON condicion join .)
+    GROUP           reduce using rule 16 (join -> INNER JOIN tabla ON condicion join .)
+    ORDER           reduce using rule 16 (join -> INNER JOIN tabla ON condicion join .)
+    $end            reduce using rule 16 (join -> INNER JOIN tabla ON condicion join .)
+    PAREN_DER       reduce using rule 16 (join -> INNER JOIN tabla ON condicion join .)
 
 
 state 94
 
-    (49) orden -> ASC .
+    (17) join -> LEFT JOIN tabla ON condicion join .
 
-    COMA            reduce using rule 49 (orden -> ASC .)
-    $end            reduce using rule 49 (orden -> ASC .)
-    PAREN_DER       reduce using rule 49 (orden -> ASC .)
+    WHERE           reduce using rule 17 (join -> LEFT JOIN tabla ON condicion join .)
+    GROUP           reduce using rule 17 (join -> LEFT JOIN tabla ON condicion join .)
+    ORDER           reduce using rule 17 (join -> LEFT JOIN tabla ON condicion join .)
+    $end            reduce using rule 17 (join -> LEFT JOIN tabla ON condicion join .)
+    PAREN_DER       reduce using rule 17 (join -> LEFT JOIN tabla ON condicion join .)
 
 
 state 95
 
-    (50) orden -> DESC .
+    (30) condiciones_orderby -> columna orden .
+    (31) condiciones_orderby -> columna orden . COMA condiciones_orderby
 
-    COMA            reduce using rule 50 (orden -> DESC .)
-    $end            reduce using rule 50 (orden -> DESC .)
-    PAREN_DER       reduce using rule 50 (orden -> DESC .)
+    $end            reduce using rule 30 (condiciones_orderby -> columna orden .)
+    PAREN_DER       reduce using rule 30 (condiciones_orderby -> columna orden .)
+    COMA            shift and go to state 102
 
 
 state 96
 
-    (29) condiciones_having -> funcion operador valor .
-    (30) condiciones_having -> funcion operador valor . COMA condiciones_having
+    (47) orden -> ASC .
 
-    ORDER           reduce using rule 29 (condiciones_having -> funcion operador valor .)
-    COMA            shift and go to state 101
+    COMA            reduce using rule 47 (orden -> ASC .)
+    $end            reduce using rule 47 (orden -> ASC .)
+    PAREN_DER       reduce using rule 47 (orden -> ASC .)
 
 
 state 97
 
-    (12) columnas -> columna COMA columnas .
+    (48) orden -> DESC .
 
-    HAVING          reduce using rule 12 (columnas -> columna COMA columnas .)
-    ORDER           reduce using rule 12 (columnas -> columna COMA columnas .)
+    COMA            reduce using rule 48 (orden -> DESC .)
+    $end            reduce using rule 48 (orden -> DESC .)
+    PAREN_DER       reduce using rule 48 (orden -> DESC .)
 
 
 state 98
 
-    (40) valor -> COMILLA PALABRA COMILLA .
+    (26) condiciones_having -> funcion operador valor .
+    (27) condiciones_having -> funcion operador valor . COMA condiciones_having
 
-    AND             reduce using rule 40 (valor -> COMILLA PALABRA COMILLA .)
-    OR              reduce using rule 40 (valor -> COMILLA PALABRA COMILLA .)
-    GROUP           reduce using rule 40 (valor -> COMILLA PALABRA COMILLA .)
-    ORDER           reduce using rule 40 (valor -> COMILLA PALABRA COMILLA .)
-    INNER           reduce using rule 40 (valor -> COMILLA PALABRA COMILLA .)
-    LEFT            reduce using rule 40 (valor -> COMILLA PALABRA COMILLA .)
-    WHERE           reduce using rule 40 (valor -> COMILLA PALABRA COMILLA .)
-    COMA            reduce using rule 40 (valor -> COMILLA PALABRA COMILLA .)
+    ORDER           reduce using rule 26 (condiciones_having -> funcion operador valor .)
+    $end            reduce using rule 26 (condiciones_having -> funcion operador valor .)
+    PAREN_DER       reduce using rule 26 (condiciones_having -> funcion operador valor .)
+    COMA            shift and go to state 103
 
 
 state 99
 
-    (38) condicion -> columna IN PAREN_IZQ consulta PAREN_DER .
+    (11) columnas -> columna COMA columnas .
 
-    AND             reduce using rule 38 (condicion -> columna IN PAREN_IZQ consulta PAREN_DER .)
-    OR              reduce using rule 38 (condicion -> columna IN PAREN_IZQ consulta PAREN_DER .)
-    GROUP           reduce using rule 38 (condicion -> columna IN PAREN_IZQ consulta PAREN_DER .)
-    ORDER           reduce using rule 38 (condicion -> columna IN PAREN_IZQ consulta PAREN_DER .)
-    INNER           reduce using rule 38 (condicion -> columna IN PAREN_IZQ consulta PAREN_DER .)
-    LEFT            reduce using rule 38 (condicion -> columna IN PAREN_IZQ consulta PAREN_DER .)
-    WHERE           reduce using rule 38 (condicion -> columna IN PAREN_IZQ consulta PAREN_DER .)
+    HAVING          reduce using rule 11 (columnas -> columna COMA columnas .)
+    ORDER           reduce using rule 11 (columnas -> columna COMA columnas .)
+    $end            reduce using rule 11 (columnas -> columna COMA columnas .)
+    PAREN_DER       reduce using rule 11 (columnas -> columna COMA columnas .)
 
 
 state 100
 
-    (33) condiciones_orderby -> columna orden COMA . condiciones_orderby
-    (32) condiciones_orderby -> . columna orden
-    (33) condiciones_orderby -> . columna orden COMA condiciones_orderby
-    (13) columna -> . PALABRA PUNTO PALABRA
-    (14) columna -> . PALABRA PUNTO PALABRA AS PALABRA
+    (38) valor -> COMILLA PALABRA COMILLA .
 
-    PALABRA         shift and go to state 6
+    AND             reduce using rule 38 (valor -> COMILLA PALABRA COMILLA .)
+    OR              reduce using rule 38 (valor -> COMILLA PALABRA COMILLA .)
+    GROUP           reduce using rule 38 (valor -> COMILLA PALABRA COMILLA .)
+    ORDER           reduce using rule 38 (valor -> COMILLA PALABRA COMILLA .)
+    $end            reduce using rule 38 (valor -> COMILLA PALABRA COMILLA .)
+    PAREN_DER       reduce using rule 38 (valor -> COMILLA PALABRA COMILLA .)
+    INNER           reduce using rule 38 (valor -> COMILLA PALABRA COMILLA .)
+    LEFT            reduce using rule 38 (valor -> COMILLA PALABRA COMILLA .)
+    WHERE           reduce using rule 38 (valor -> COMILLA PALABRA COMILLA .)
+    COMA            reduce using rule 38 (valor -> COMILLA PALABRA COMILLA .)
 
-    columna                        shift and go to state 86
-    condiciones_orderby            shift and go to state 102
 
 state 101
 
-    (30) condiciones_having -> funcion operador valor COMA . condiciones_having
-    (29) condiciones_having -> . funcion operador valor
-    (30) condiciones_having -> . funcion operador valor COMA condiciones_having
-    (15) funcion -> . MIN PAREN_IZQ columna PAREN_DER
-    (16) funcion -> . MAX PAREN_IZQ columna PAREN_DER
-    (17) funcion -> . COUNT PAREN_IZQ columna PAREN_DER
-    (18) funcion -> . COUNT PAREN_IZQ DISTINCT columna PAREN_DER
+    (36) condicion -> columna IN PAREN_IZQ consulta PAREN_DER .
 
-    MIN             shift and go to state 7
-    MAX             shift and go to state 8
-    COUNT           shift and go to state 9
+    AND             reduce using rule 36 (condicion -> columna IN PAREN_IZQ consulta PAREN_DER .)
+    OR              reduce using rule 36 (condicion -> columna IN PAREN_IZQ consulta PAREN_DER .)
+    GROUP           reduce using rule 36 (condicion -> columna IN PAREN_IZQ consulta PAREN_DER .)
+    ORDER           reduce using rule 36 (condicion -> columna IN PAREN_IZQ consulta PAREN_DER .)
+    $end            reduce using rule 36 (condicion -> columna IN PAREN_IZQ consulta PAREN_DER .)
+    PAREN_DER       reduce using rule 36 (condicion -> columna IN PAREN_IZQ consulta PAREN_DER .)
+    INNER           reduce using rule 36 (condicion -> columna IN PAREN_IZQ consulta PAREN_DER .)
+    LEFT            reduce using rule 36 (condicion -> columna IN PAREN_IZQ consulta PAREN_DER .)
+    WHERE           reduce using rule 36 (condicion -> columna IN PAREN_IZQ consulta PAREN_DER .)
 
-    funcion                        shift and go to state 74
-    condiciones_having             shift and go to state 103
 
 state 102
 
-    (33) condiciones_orderby -> columna orden COMA condiciones_orderby .
+    (31) condiciones_orderby -> columna orden COMA . condiciones_orderby
+    (30) condiciones_orderby -> . columna orden
+    (31) condiciones_orderby -> . columna orden COMA condiciones_orderby
+    (53) columna -> . PALABRA PUNTO PALABRA
+    (54) columna -> . PALABRA PUNTO PALABRA AS PALABRA
 
-    $end            reduce using rule 33 (condiciones_orderby -> columna orden COMA condiciones_orderby .)
-    PAREN_DER       reduce using rule 33 (condiciones_orderby -> columna orden COMA condiciones_orderby .)
+    PALABRA         shift and go to state 8
 
+    columna                        shift and go to state 88
+    condiciones_orderby            shift and go to state 104
 
 state 103
 
-    (30) condiciones_having -> funcion operador valor COMA condiciones_having .
+    (27) condiciones_having -> funcion operador valor COMA . condiciones_having
+    (26) condiciones_having -> . funcion operador valor
+    (27) condiciones_having -> . funcion operador valor COMA condiciones_having
+    (12) funcion -> . MIN PAREN_IZQ columna PAREN_DER
+    (13) funcion -> . MAX PAREN_IZQ columna PAREN_DER
+    (14) funcion -> . COUNT PAREN_IZQ columna PAREN_DER
+    (15) funcion -> . COUNT PAREN_IZQ DISTINCT columna PAREN_DER
 
-    ORDER           reduce using rule 30 (condiciones_having -> funcion operador valor COMA condiciones_having .)
+    MIN             shift and go to state 9
+    MAX             shift and go to state 10
+    COUNT           shift and go to state 11
+
+    funcion                        shift and go to state 76
+    condiciones_having             shift and go to state 105
+
+state 104
+
+    (31) condiciones_orderby -> columna orden COMA condiciones_orderby .
+
+    $end            reduce using rule 31 (condiciones_orderby -> columna orden COMA condiciones_orderby .)
+    PAREN_DER       reduce using rule 31 (condiciones_orderby -> columna orden COMA condiciones_orderby .)
+
+
+state 105
+
+    (27) condiciones_having -> funcion operador valor COMA condiciones_having .
+
+    ORDER           reduce using rule 27 (condiciones_having -> funcion operador valor COMA condiciones_having .)
+    $end            reduce using rule 27 (condiciones_having -> funcion operador valor COMA condiciones_having .)
+    PAREN_DER       reduce using rule 27 (condiciones_having -> funcion operador valor COMA condiciones_having .)
 
