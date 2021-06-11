@@ -73,7 +73,7 @@ lexer = lex.lex() #instancio el lexer
 
 
 tablas = {} #Guardo nombre y alias de las tablas
-diccionario = {} #Diccionario de listas, donde la key es la PALABRA antes del PUNTO
+columnas = {} #Diccionario de listas, donde la key es la PALABRA antes del PUNTO
                  #y el valor es la lista de las columnas que comparten esa PALABRA
 
 def p_consulta(p):
@@ -140,22 +140,18 @@ def p_tabla(p):
         tablas.setdefault(p[3],p[1])
     elif len(p) == 3:
         tablas.setdefault(p[2],p[1])
-
-
-
 def p_columa(p):
     '''
     columna : PALABRA PUNTO PALABRA
     columna : PALABRA PUNTO PALABRA AS PALABRA
     '''
-    lista_columnas=diccionario.get(p[1])
+    lista_columna =columnas.get(p[1])
 
-    if lista_columnas is not None: #Si ya está registrada la tabla
-        if p[3] not in lista_columnas:
-            lista_columnas.append(p[3]) #Agrego la columna a la lista de esa tabla
+    if lista_columna is not None: #Si ya está registrada la tabla
+        if p[3] not in lista_columna:
+            lista_columna.append(p[3]) #Agrego la columna a la lista de esa tabla
     else: #Si no está registrada la tabla
-        diccionario.setdefault(p[1], [p[3]])  #La registro junto a la columna que ya trae
-
+        columnas.setdefault(p[1], [p[3]])  #La registro junto a la columna que ya trae
 def p_error(p):
     print("Error sintáctico detectado")
 
@@ -169,22 +165,24 @@ def parse_select_statement(s):
     analizador.parse(s)
 
     tablas_alias = tablas.keys() #Lista de los alias de las tablas
-    tablas_columnas = diccionario.keys() #Lista de llaves, que son las tablas que preceden a las columnas
+    tablas_columnas = columnas.keys() #Lista de llaves, que son las tablas que preceden a las columnas
 
     diferencia = set(tablas_alias) ^ set(tablas_columnas)
+
     if len(diferencia) > 0:
         raise NameError('Error, se estan usando tablas nunca definidas')
     else:
-        #reemplazo en el diccionario los alias por los nombre de tablas
-        
+        #generamos un nuevo diccionario ya que modificar las claves del diccionarios parece imposible
+        diccionario= {}
+        for key in columnas:
+            lista = columnas[key]
+            nueva_key = tablas.get(key)
+            diccionario.setdefault(nueva_key,lista)
 
 
-        for lista in diccionario.values(): #order alfabeticamente
+        #ordenar alfabeticamente
+        for lista in diccionario.values():
             lista.sort()
 
         return diccionario
 
-
-if __name__ == '__main__':
-    diccionario = parse_select_statement('SELECT Empleado.Nombre, Empleado.Apellido, C.Nombre, V.Cantidad FROM Empleado, Cliente AS C, Vendedor V WHERE X.Exito < 2')
-    print('algo')
