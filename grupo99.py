@@ -72,9 +72,17 @@ def t_error(t):
 lexer = lex.lex() #instancio el lexer
 
 
-tablas = {} #Guardo nombre y alias de las tablas
-columnas = {} #Diccionario de listas, donde la key es la PALABRA antes del PUNTO
-                 #y el valor es la lista de las columnas que comparten esa PALABRA
+tablas = {} # Guardo nombre y alias de las tablas
+
+            # Ejemplo: {'Empleados':'Empleados',
+            #           'C':'Clientes' ,
+            #           'V':'Vendedores'}
+
+columnas = {}   # Diccionario de listas, donde la key es la PALABRA antes del PUNTO
+                # y el valor es la lista de las columnas que comparten esa PALABRA
+
+                # Ejemplo: {'C':[Nombre,Apellido,Cantidad],
+                #           'V':[Id, Descripcion, Fecha]}
 
 def p_consulta(p):
     '''
@@ -145,11 +153,13 @@ def p_columa(p):
     columna : PALABRA PUNTO PALABRA
     columna : PALABRA PUNTO PALABRA AS PALABRA
     '''
-    lista_columna =columnas.get(p[1])
 
-    if lista_columna is not None: #Si ya está registrada la tabla
-        if p[3] not in lista_columna:
-            lista_columna.append(p[3]) #Agrego la columna a la lista de esa tabla
+
+    lista_columnas = columnas.get(p[1])
+
+    if lista_columnas is not None: #Si ya está registrada la tabla
+        if p[3] not in lista_columnas: #Si no esta la columna en la lista
+            lista_columnas.append(p[3]) #Agrego la columna a la lista de esa tabla
     else: #Si no está registrada la tabla
         columnas.setdefault(p[1], [p[3]])  #La registro junto a la columna que ya trae
 def p_error(p):
@@ -178,7 +188,6 @@ def parse_select_statement(s):
             lista = columnas[key]
             nueva_key = tablas.get(key)
             diccionario.setdefault(nueva_key,lista)
-
 
         #ordenar alfabeticamente
         for lista in diccionario.values():
